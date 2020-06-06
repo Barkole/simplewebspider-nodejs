@@ -10,8 +10,9 @@
 4. Install [node.js 12.x](https://nodejs.org/)
 5. Install [yarn](https://yarnpkg.com/) - [Installation](https://classic.yarnpkg.com/en/docs/install/#windows-stable)
 6. Install [lint-staged](https://github.com/okonet/lint-staged): `npx mrm lint-staged`
-7. Clone project: `git clone ...`
-8. Setup VSCode
+7. Install tcs: `yarn global add typescript`
+8. Clone project: `git clone ...`
+9. Setup VSCode
    1. Install recommended extensions
    2. Install all dependencies: `yarn install`
 
