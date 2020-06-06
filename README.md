@@ -37,4 +37,5 @@ Only use
 ## Related documentation
 
 * [TypeScript Tutorial](https://www.typescriptlang.org/docs/tutorial.html)
+  * [TypeScript-Node-Starter](https://github.com/microsoft/TypeScript-Node-Starter/blob/master/README.md)
 * [yarn - Creating a new project](https://classic.yarnpkg.com/en/docs/creating-a-project/)
