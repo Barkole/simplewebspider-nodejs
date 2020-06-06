@@ -3,7 +3,7 @@
   "homepage": "https://gitlab.com/Lepardo/simplewebspider-nodejs",
   "version": "0.0.1",
   "description": "SimpleWebSpider re-implemented in node.js and TypeScript",
-  "main": "cli.ts",
+  "main": "src/cli.ts",
   "repository": "git@gitlab.com:Lepardo/simplewebspider-nodejs.git",
   "author": "Michael D.",
   "license": "MIT",
