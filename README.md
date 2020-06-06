@@ -18,6 +18,10 @@
 
 ## Coding
 
+### Known issues
+
+* Import of own modules must end with `.js`: `import { config } from "./config.js";`
+
 ### Executing
 
 Start CLI by executing
