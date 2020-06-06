@@ -2,6 +2,7 @@
     "recommendations": [
         "yzhang.markdown-all-in-one",
         "eamodio.gitlens",
-        "shd101wyy.markdown-preview-enhanced"
+        "shd101wyy.markdown-preview-enhanced",
+        "dbaeumer.vscode-eslint"
     ]
 }
