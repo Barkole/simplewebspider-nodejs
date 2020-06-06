@@ -18,6 +18,14 @@
 
 ## Coding
 
+### Executing
+
+Start CLI by executing
+
+```sh
+> yarn start
+```
+
 ### Managing dependencies
 
 Only use
