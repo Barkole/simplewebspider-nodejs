@@ -7,5 +7,6 @@
         "source.fixAll.eslint": true
     },
     "files.eol": "\n",
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "editor.tabSize": 2
 }

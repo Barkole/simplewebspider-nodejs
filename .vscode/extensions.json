@@ -3,6 +3,7 @@
         "yzhang.markdown-all-in-one",
         "eamodio.gitlens",
         "shd101wyy.markdown-preview-enhanced",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "shakram02.bash-beautify",
     ]
 }
