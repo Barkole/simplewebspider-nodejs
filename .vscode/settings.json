@@ -1,12 +1,16 @@
 {
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "files.eol": "\n",
-    "files.autoSave": "afterDelay",
-    "editor.tabSize": 2
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[ts]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+  },
+  "files.eol": "\n",
+  "files.autoSave": "afterDelay",
 }
