@@ -1,0 +1,20 @@
+{
+  "name": "simplewebspider-nodejs",
+  "homepage": "https://gitlab.com/Lepardo/simplewebspider-nodejs",
+  "version": "0.0.1",
+  "description": "SimpleWebSpider re-implemented in node.js and TypeScript",
+  "main": "cli.ts",
+  "repository": "git@gitlab.com:Lepardo/simplewebspider-nodejs.git",
+  "author": "Michael D.",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": "~12.18.0"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "prettier": "2.0.5"
+  },
+  "dependencies": {}
+}
