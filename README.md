@@ -24,6 +24,8 @@
 
 How to fix that?
 
+* Perhaps that? <https://github.com/microsoft/TypeScript/issues/27287#issuecomment-451712919>
+
 #### Debugging is not possible under Windows
 
 ```txt
