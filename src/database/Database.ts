@@ -1,4 +1,4 @@
-interface Database {
+interface IDatabase {
   pop(): string | undefined;
   push(value: string): this;
 }

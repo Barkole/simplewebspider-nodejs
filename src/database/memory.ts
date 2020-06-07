@@ -1,8 +1,9 @@
 import { IsPositive, IsInt } from "class-validator";
 import { checkValidateSync } from "../core/utils";
 import { config } from "../core/config";
+import { logger } from "../core/logger";
 
-class LimitedMemoryDatabase implements Database {
+class LimitedMemoryDatabase implements IDatabase {
   @IsPositive()
   @IsInt()
   readonly limit: number;
@@ -13,6 +14,7 @@ class LimitedMemoryDatabase implements Database {
     return this.#entries.pop();
   }
   push(value: string): this {
+    logger.debug(`Add entry: ${value}`);
     this.#entries.push(value);
     if (this.#entries.length > this.limit) {
       this.#entries.shift();
