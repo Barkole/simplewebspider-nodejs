@@ -6,10 +6,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "[ts]": {
+  "[typescript]": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": false
   },
   "files.eol": "\n",
   "files.autoSave": "afterDelay",

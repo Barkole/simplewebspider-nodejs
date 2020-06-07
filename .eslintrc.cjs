@@ -44,5 +44,8 @@ module.exports = {
     "comma-dangle": [`error`, `only-multiline`],
     "eol-last": [`error`, `unix`],
     "linebreak-style": [`error`, `unix`],
+    "no-console": `error`,
+    "no-alert": `error`,
+    "no-debugger": `error`,
   },
 };

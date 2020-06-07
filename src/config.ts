@@ -1,18 +1,19 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import dotenv from "dotenv";
 import fs from "fs";
+import { logger } from "./logger";
 
 dotenv.config();
 
 const additionalEnv = `${__dirname}/.env.override`;
 if (fs.existsSync(additionalEnv)) {
-  console.log(`Loading ${additionalEnv}...`);
+  logger.info(`Loading ${additionalEnv}...`);
   const envConfig = dotenv.parse(fs.readFileSync(additionalEnv));
   for (const k in envConfig) {
     process.env[k] = envConfig[k];
   }
 } else {
-  console.log(`No ${additionalEnv} found...`);
+  logger.info(`No ${additionalEnv} found...`);
 }
 
 export const config = {
@@ -25,9 +26,4 @@ export const config = {
   },
 };
 
-console.log(` ======== `);
-console.log(`name: ${config.build.name}`);
-console.log(`version: ${config.build.version}`);
-console.log(`timestamp: ${config.build.timestamp}`);
-console.log(`sha: ${config.build.sha}`);
-console.log(` ======== `);
+logger.info(`Build ${JSON.stringify(config.build)}`);

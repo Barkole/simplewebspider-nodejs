@@ -1,6 +1,9 @@
 #!/bin/bash
+set -e
+
 rm -rf ./dist
 yarn install
+yarn lint
 tsc --resolveJsonModule
 
 echo BUILD_VERSION=`cat package.json \
