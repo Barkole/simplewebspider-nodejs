@@ -14,10 +14,54 @@ function loadConfig(filename: string): void {
   }
 }
 
+interface ILogConfig {
+  level: string;
+}
+
+interface IBootrapConfig {
+  file: string;
+}
+
+interface IHttpThrottlerConfig {
+  once: number;
+  max: number;
+  ttl: number;
+}
+
+interface IRequestThrottlerConfig {
+  concurrent: number;
+  perMinute: number;
+}
+interface IThrottlerConfig {
+  host: IHttpThrottlerConfig;
+  request: IRequestThrottlerConfig;
+}
+
+interface IHttpConfig {
+  timeout: number;
+}
+
+interface IBuildConfig {
+  name: string;
+  version: string;
+  timestamp: string;
+  sha: string;
+}
+
+interface ISwsConfguration {
+  username: string;
+  test: string;
+  log: ILogConfig;
+  bootstrap: IBootrapConfig;
+  throttler: IThrottlerConfig;
+  http: IHttpConfig;
+  build: IBuildConfig;
+}
+
 dotenv.config();
 loadConfig(`${__dirname}/.env.override`);
 
-export const config = {
+const config: ISwsConfguration = {
   username: process.env.USERNAME!,
   test: process.env.TEST || `DEFAULT`,
   log: {
@@ -34,7 +78,7 @@ export const config = {
     },
     request: {
       concurrent: Number(process.env.THROTTLER_REQUEST_CONCURRENT) || 4,
-      "per-minute": Number(process.env.THROTTLER_REQUEST_PERMINUTE) || 10,
+      perMinute: Number(process.env.THROTTLER_REQUEST_PERMINUTE) || 10,
     },
   },
   http: {
@@ -46,4 +90,16 @@ export const config = {
     timestamp: process.env.BUILD_TIMESTAMP!,
     sha: process.env.BUILD_SHA!,
   },
+};
+
+export {
+  config,
+  IBootrapConfig,
+  IBuildConfig,
+  IHttpConfig,
+  IHttpThrottlerConfig,
+  ILogConfig,
+  IRequestThrottlerConfig,
+  ISwsConfguration,
+  IThrottlerConfig,
 };

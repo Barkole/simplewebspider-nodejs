@@ -47,6 +47,7 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
+    "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
     "winston": "^3.2.1"
   }
