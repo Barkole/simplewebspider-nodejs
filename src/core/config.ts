@@ -26,9 +26,23 @@ function loadConfig(filename: string): void {
   }
 }
 
-// TODO Is there a way to define "`debug` | `info`" only once?
+interface IDatabaseConfig {
+  readonly size: number;
+}
+
+class DatabaseConfig implements IDatabaseConfig {
+  @IsPositive()
+  @IsInt()
+  size: number;
+
+  constructor(that: IDatabaseConfig) {
+    this.size = that.size;
+    checkValidateSync(this);
+  }
+}
+
 interface ILogConfig {
-  readonly level: `debug` | `info`;
+  readonly level: LogLevel;
 }
 class LogConfig implements ILogConfig {
   constructor(that: ILogConfig) {
@@ -36,7 +50,7 @@ class LogConfig implements ILogConfig {
     checkValidateSync(this);
   }
   @IsNotEmpty()
-  level: `debug` | `info`;
+  level: LogLevel;
 }
 
 interface IBootstrapConfig {
@@ -157,20 +171,10 @@ interface ISwsConfig {
   readonly throttler: IThrottlerConfig;
   readonly http: IHttpConfig;
   readonly build: IBuildConfig;
+  readonly database: IDatabaseConfig;
 }
 
 class SwsConfig implements ISwsConfig {
-  constructor(that: ISwsConfig) {
-    this.username = that.username;
-    this.test = that.test;
-    this.log = new LogConfig(that.log);
-    this.bootstrap = new BootstrapConfig(that.bootstrap);
-    this.throttler = new ThrottlerConfig(that.throttler);
-    this.http = new HttpConfig(that.http);
-    this.build = new BuildConfig(that.build);
-    checkValidateSync(this);
-  }
-
   @IsNotEmpty()
   username: string;
   @IsNotEmpty()
@@ -185,6 +189,20 @@ class SwsConfig implements ISwsConfig {
   http: IHttpConfig;
   @IsNotEmpty()
   build: IBuildConfig;
+  @IsNotEmpty()
+  database: IDatabaseConfig;
+
+  constructor(that: ISwsConfig) {
+    this.username = that.username;
+    this.test = that.test;
+    this.log = new LogConfig(that.log);
+    this.bootstrap = new BootstrapConfig(that.bootstrap);
+    this.throttler = new ThrottlerConfig(that.throttler);
+    this.http = new HttpConfig(that.http);
+    this.build = new BuildConfig(that.build);
+    this.database = new DatabaseConfig(that.database);
+    checkValidateSync(this);
+  }
 }
 
 class UnknownLogLevelError extends Error {
@@ -197,7 +215,7 @@ class UnknownLogLevelError extends Error {
   }
 }
 
-function logLevel(logLevel: string | undefined): `debug` | `info` | undefined {
+function logLevel(logLevel: string | undefined): LogLevel | undefined {
   if (logLevel === undefined || logLevel === null || logLevel === ``) {
     return undefined;
   }
@@ -249,6 +267,9 @@ function initializeConfiguration(): SwsConfig {
         version: process.env.BUILD_VERSION!,
         timestamp: process.env.BUILD_TIMESTAMP!,
         sha: process.env.BUILD_SHA!,
+      },
+      database: {
+        size: Number(process.env.DATABASE_SIZE) || 1024 * 1024,
       },
     });
   } catch (e) {
