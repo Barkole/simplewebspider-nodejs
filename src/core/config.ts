@@ -5,14 +5,13 @@ import { IsNotEmpty, IsInt, IsPositive, Min, Max } from "class-validator";
 import { checkValidateSync } from "./utils";
 
 function loadConfig(filename: string): void {
-  if (fs.existsSync(filename)) {
-    // logger.info(`Loading ${filename}...`);
-    const envConfig = dotenv.parse(fs.readFileSync(filename));
-    for (const k in envConfig) {
-      process.env[k] = envConfig[k];
-    }
-    // } else {
-    //   logger.info(`No ${filename} found...`);
+  if (!fs.existsSync(filename)) {
+    throw new Error(`File does not exists: ${filename}`);
+  }
+
+  const envConfig = dotenv.parse(fs.readFileSync(filename));
+  for (const k in envConfig) {
+    process.env[k] = envConfig[k];
   }
 }
 
@@ -152,8 +151,7 @@ interface ISwsConfig {
 class SwsConfig implements ISwsConfig {
   constructor(that: ISwsConfig) {
     this.username = that.username;
-    // this.test = that.test;
-    this.test = ``;
+    this.test = that.test;
     this.log = new LogConfig(that.log);
     this.bootstrap = new BootstrapConfig(that.bootstrap);
     this.throttler = new ThrottlerConfig(that.throttler);
@@ -189,7 +187,7 @@ function logLevel(v: string | undefined): `debug` | `info` | undefined {
 }
 
 dotenv.config();
-loadConfig(`${__dirname}/.env.override`);
+loadConfig(`${__dirname}/../.env.override`);
 
 const config = new SwsConfig({
   username: process.env.USERNAME!,
