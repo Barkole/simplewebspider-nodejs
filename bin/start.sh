@@ -1,12 +1,18 @@
 #!/bin/bash
 set -e
 
-rm -rf ./dist
+#rm -rf ./dist
+echo " => yarn install..."
 yarn install
+echo " => yarn lint..."
 yarn lint
+echo " => tsc..."
 tsc --resolveJsonModule
+echo " => copy resources..."
 cp -R ./resources ./dist/
 
+echo " => create env override..."
+echo "# Auto generated" > ./dist/.env.override
 echo BUILD_VERSION=`cat package.json \
 | grep "\"version\"" \
 | head -1 \
@@ -26,4 +32,5 @@ else
     echo BUILD_SHA=`git rev-parse HEAD`-DIRTY >> ./dist/.env.override
 fi
 
-node ./dist/cli.js
+echo " => node..."
+node --enable-source-maps ./dist/cli.js

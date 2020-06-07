@@ -20,14 +20,13 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
-      "eslint --fix"
+      "eslint --fix --report-unused-disable-directives"
     ],
     "*.js": "eslint --cache --fix"
   },
   "scripts": {
-    "lint": "eslint --quiet --fix src/**/*.{js,ts,tsx}",
-    "start": "bash ./bin/start.sh",
-    "eslint-print-config": "./node_modules/.bin/eslint --print-config src/*.ts"
+    "lint": "eslint --quiet --fix --report-unused-disable-directives src/**/*.{js,ts,tsx}",
+    "start": "bash ./bin/start.sh"
   },
   "devDependencies": {
     "@types/node": "^14.0.11",

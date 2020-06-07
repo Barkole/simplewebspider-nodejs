@@ -38,6 +38,18 @@ Only use
 * `yarn remove`
 * `yarn upgrade --interactive`
 
+### Evaluate new dependency
+
+Please use and compare several 3rd party libraries by using
+
+* <https://npmcompare.com/>
+* <https://www.npmtrends.com/>
+* <https://bundlephobia.com/>
+
+For upgrade you can also dig into changes by using
+
+* <https://diff.intrinsic.com/>
+
 ## Related documentation
 
 * [TypeScript Tutorial](https://www.typescriptlang.org/docs/tutorial.html)
