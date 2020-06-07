@@ -40,13 +40,23 @@ See also
 * <https://stackoverflow.com/questions/49910024/vscode-path-generation-failure-in-run-build-task-tsc-build>
 * <https://github.com/Microsoft/vscode/issues/35593>
 
+#### Auto compile on save is not working
+
+Most likely same issue as above. But no errors are shown.
+
 ### Executing
 
-Start CLI by executing
+* Normal and safe start:
 
-```sh
-> yarn start
-```
+   ```sh
+   > yarn start
+   ```
+
+* Quick start thanks to autocompile on save - if it would work
+
+   ```sh
+   > yarn start-quick
+   ```
 
 ### Managing dependencies
 

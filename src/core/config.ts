@@ -4,6 +4,7 @@ import fs from "fs";
 import { IsNotEmpty, IsInt, IsPositive, Min, Max } from "class-validator";
 import { checkValidateSync } from "./utils";
 
+type LogLevel = `debug` | `info`;
 class EnvFileMissingError extends Error {
   filename: string | undefined;
 
@@ -271,4 +272,5 @@ export {
   EnvFileMissingError,
   UnknownLogLevelError,
   InvalidConfigurationError,
+  LogLevel,
 };

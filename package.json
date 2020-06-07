@@ -26,7 +26,8 @@
   },
   "scripts": {
     "lint": "eslint --quiet --fix --report-unused-disable-directives src/**/*.{js,ts,tsx}",
-    "start": "bash ./bin/start.sh"
+    "start": "bash ./bin/start.sh",
+    "start-quick": "node --enable-source-maps ./dist/cli.js"
   },
   "devDependencies": {
     "@types/node": "^14.0.11",
