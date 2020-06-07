@@ -20,7 +20,23 @@
 
 ### Known issues
 
-* Import of own modules must end with `.js`: `import { config } from "./config.js";`
+#### Import of own modules must end with `.js`: `import { config } from "./config.js";`
+
+How to fix that?
+
+#### Debugging is not possible under Windows
+
+```txt
+> Executing task: d:\vscode\simplewebspider-nodejs\node_modules\.bin\tsc.cmd -p d:\vscode\simplewebspider-nodejs\tsconfig.json <
+
+/usr/bin/bash: d:vscodesimplewebspider-nodejsnode_modules.bintsc.cmd: command not found
+The terminal process terminated with exit code: 127
+```
+
+See also
+
+* <https://stackoverflow.com/questions/49910024/vscode-path-generation-failure-in-run-build-task-tsc-build>
+* <https://github.com/Microsoft/vscode/issues/35593>
 
 ### Executing
 
