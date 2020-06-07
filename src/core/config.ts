@@ -186,14 +186,24 @@ class SwsConfig implements ISwsConfig {
   build: IBuildConfig;
 }
 
-function logLevel(v: string | undefined): `debug` | `info` | undefined {
-  if (v === undefined || v === null || v === ``) {
+class UnknownLogLevelError extends Error {
+  logLevel: string | undefined;
+
+  constructor(message?: string, logLevel?: string) {
+    super(message);
+    this.name = `UnknownLogLevelError`;
+    this.logLevel = logLevel;
+  }
+}
+
+function logLevel(logLevel: string | undefined): `debug` | `info` | undefined {
+  if (logLevel === undefined || logLevel === null || logLevel === ``) {
     return undefined;
   }
-  if (v === `info` || v === `debug`) {
-    return v;
+  if (logLevel === `info` || logLevel === `debug`) {
+    return logLevel;
   }
-  throw new Error(`Unknown log level: ${v}`);
+  throw new UnknownLogLevelError(`Unknown log level`, logLevel);
 }
 
 dotenv.config();
@@ -242,4 +252,5 @@ export {
   IThrottlerConfig,
   SwsConfig,
   EnvFileMissingError,
+  UnknownLogLevelError,
 };
