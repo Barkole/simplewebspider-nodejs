@@ -43,7 +43,7 @@ export const config = {
   build: {
     name: process.env.BUILD_NAME!,
     version: process.env.BUILD_VERSION!,
-    timestamp: process.env.BUILD_TIMESTAMP,
-    sha: process.env.BUILD_SHA,
+    timestamp: process.env.BUILD_TIMESTAMP!,
+    sha: process.env.BUILD_SHA!,
   },
 };
