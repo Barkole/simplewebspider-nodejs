@@ -25,9 +25,9 @@ export const config = {
   },
 };
 
-console.log(" ======== ");
+console.log(` ======== `);
 console.log(`name: ${config.build.name}`);
 console.log(`version: ${config.build.version}`);
 console.log(`timestamp: ${config.build.timestamp}`);
 console.log(`sha: ${config.build.sha}`);
-console.log(" ======== ");
+console.log(` ======== `);
