@@ -15,13 +15,11 @@ if (fs.existsSync(additionalEnv)) {
   console.log(`No ${additionalEnv} found...`);
 }
 
-const packageJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
-
 export const config = {
   username: process.env.USERNAME!,
   build: {
-    name: packageJson.name!,
-    version: packageJson.version!,
+    name: process.env.BUILD_NAME!,
+    version: process.env.BUILD_VERSION!,
     timestamp: process.env.BUILD_TIMESTAMP,
     sha: process.env.BUILD_SHA,
   },
