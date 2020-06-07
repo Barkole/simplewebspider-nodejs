@@ -5,6 +5,7 @@ rm -rf ./dist
 yarn install
 yarn lint
 tsc --resolveJsonModule
+cp -R ./resources ./dist/
 
 echo BUILD_VERSION=`cat package.json \
 | grep "\"version\"" \
