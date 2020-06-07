@@ -10,7 +10,7 @@
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
     "editor.detectIndentation": false,
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true
   },
   "files.eol": "\n",
   "files.autoSave": "afterDelay",

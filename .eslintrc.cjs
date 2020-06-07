@@ -47,5 +47,6 @@ module.exports = {
     "no-console": `error`,
     "no-alert": `error`,
     "no-debugger": `error`,
+    "@typescript-eslint/explicit-function-return-type": `error`,
   },
 };
