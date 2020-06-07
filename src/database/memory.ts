@@ -8,23 +8,26 @@ class LimitedMemoryDatabase implements IDatabase {
   @IsInt()
   readonly limit: number;
 
-  #entries: string[];
+  //@IsEmpty()
+  //@IsDefined()
+  entries: string[];
 
   pop(): string | undefined {
-    return this.#entries.pop();
+    return this.entries.pop();
   }
+
   push(value: string): this {
     logger.debug(`Add entry: ${value}`);
-    this.#entries.push(value);
-    if (this.#entries.length > this.limit) {
-      this.#entries.shift();
+    this.entries.push(value);
+    if (this.entries.length > this.limit) {
+      this.entries.shift();
     }
     return this;
   }
 
   constructor(limit: number) {
     this.limit = limit;
-    this.#entries = [];
+    this.entries = [];
     checkValidateSync(this);
   }
 }

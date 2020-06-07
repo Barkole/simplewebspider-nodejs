@@ -1,5 +1,6 @@
 import { config } from "./core/config.js";
 import { logger } from "./core/logger.js";
+import { crawler } from "./engine/crawler.js";
 // import Errlop from "errlop";
 
 process.on(`uncaughtException`, function (err) {
@@ -61,5 +62,5 @@ process.on(`uncaughtException`, function (err) {
 logger.info(`Build`, config.build);
 logger.debug(`Configuration`, config);
 
-const message = `Hello World ${config.username}:\nTEST: ${config.test}`;
-logger.info(message);
+logger.info(`Starting crawler...`);
+crawler.run();

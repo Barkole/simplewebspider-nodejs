@@ -3,6 +3,7 @@ import { IBootstrapConfig, config } from "../core/config";
 import { checkValidateSync } from "../core/utils";
 import fs from "fs";
 import util from "util";
+import Errlop from "errlop";
 
 const readFile = util.promisify(fs.readFile);
 
@@ -10,12 +11,12 @@ interface IBootstrapper {
   run(database: IDatabase): Promise<void>;
 }
 
-class BootstrapError extends Error {
+class BootstrapError extends Errlop {
   filename: string | undefined;
   cause: Error | undefined;
 
-  constructor(message?: string, filename?: string, cause?: Error) {
-    super(message);
+  constructor(message: string, filename?: string, cause?: Error) {
+    super(message, cause);
     this.filename = filename;
     this.cause = cause;
   }
@@ -23,12 +24,12 @@ class BootstrapError extends Error {
 
 class Bootstrapper implements IBootstrapper {
   @IsNotEmptyObject()
-  #config: IBootstrapConfig;
+  config: IBootstrapConfig;
 
   async run(database: IDatabase): Promise<void> {
     try {
-      const filename = this.#config.filename;
-      const content = await readFile(filename, `uft8`);
+      const filename = this.config.filename;
+      const content = await readFile(filename, `utf8`);
       content
         .split(/\r?\n/) //
         .filter(
@@ -37,16 +38,12 @@ class Bootstrapper implements IBootstrapper {
         ) //
         .forEach(database.push);
     } catch (e) {
-      throw new BootstrapError(
-        `Bootstrapping failed`,
-        this.#config.filename,
-        e
-      );
+      throw new BootstrapError(`Bootstrapping failed`, this.config.filename, e);
     }
   }
 
   constructor(config: IBootstrapConfig) {
-    this.#config = config;
+    this.config = config;
     checkValidateSync(this);
   }
 }

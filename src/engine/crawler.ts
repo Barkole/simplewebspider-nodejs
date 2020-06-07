@@ -2,6 +2,7 @@ import { IsNotEmptyObject } from "class-validator";
 import { checkValidateSync } from "../core/utils";
 import { database } from "../database/memory";
 import { bootstrapper, IBootstrapper } from "./bootstrapper";
+import { logger } from "../core/logger";
 
 interface ICrawler {
   run(): Promise<void>;
@@ -14,6 +15,7 @@ class SimplerCrawler implements ICrawler {
   bootstrapper: IBootstrapper;
 
   async run(): Promise<void> {
+    logger.info(`Starting bootstrapping...`);
     await this.bootstrapper.run(this.database);
     // Start bots
   }
