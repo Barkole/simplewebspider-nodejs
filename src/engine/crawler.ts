@@ -9,18 +9,18 @@ interface ICrawler {
 
 class SimplerCrawler implements ICrawler {
   @IsNotEmptyObject()
-  #database: IDatabase;
+  database: IDatabase;
   @IsNotEmptyObject()
-  #bootstrapper: IBootstrapper;
+  bootstrapper: IBootstrapper;
 
   async run(): Promise<void> {
-    await this.#bootstrapper.run(this.#database);
+    await this.bootstrapper.run(this.database);
     // Start bots
   }
 
   constructor(database: IDatabase, bootstrapper: IBootstrapper) {
-    this.#database = database;
-    this.#bootstrapper = bootstrapper;
+    this.database = database;
+    this.bootstrapper = bootstrapper;
     checkValidateSync(this);
   }
 }
