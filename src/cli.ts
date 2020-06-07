@@ -1,5 +1,5 @@
-import { config } from "./config.js";
-import { logger } from "./logger.js";
+import { config } from "./core/config.js";
+import { logger } from "./core/logger.js";
 
 logger.info(`Build ${JSON.stringify(config.build)}`);
 logger.debug(`Configuration: ${JSON.stringify(config)}`);
