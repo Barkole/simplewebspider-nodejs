@@ -4,9 +4,19 @@ import fs from "fs";
 import { IsNotEmpty, IsInt, IsPositive, Min, Max } from "class-validator";
 import { checkValidateSync } from "./utils";
 
+class EnvFileMissingError extends Error {
+  filename: string | undefined;
+
+  constructor(message?: string, filename?: string) {
+    super(message);
+    this.name = `EnvFileMissingError`;
+    this.filename = filename;
+  }
+}
+
 function loadConfig(filename: string): void {
   if (!fs.existsSync(filename)) {
-    throw new Error(`File does not exists: ${filename}`);
+    throw new EnvFileMissingError(`File does not exists`, filename);
   }
 
   const envConfig = dotenv.parse(fs.readFileSync(filename));
@@ -191,7 +201,7 @@ loadConfig(`${__dirname}/../.env.override`);
 
 const config = new SwsConfig({
   username: process.env.USERNAME!,
-  test: process.env.TEST || `DEFAULT`,
+  test: process.env.TEST!,
   log: {
     level: logLevel(process.env.LOG_LEVEL) || `info`,
   },
@@ -231,4 +241,5 @@ export {
   ISwsConfig,
   IThrottlerConfig,
   SwsConfig,
+  EnvFileMissingError,
 };
