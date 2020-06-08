@@ -42,12 +42,6 @@
         -> D:\vscode\simplewebspider-nodejs\src\engine\crawler.ts:19:5
 ```
 
-#### Import of own modules must end with `.js`: `import { config } from "./config.js";`
-
-How to fix that?
-
-* Perhaps that? <https://github.com/microsoft/TypeScript/issues/27287#issuecomment-451712919>
-
 #### Debugging is not possible under Windows
 
 ```txt
@@ -74,6 +68,27 @@ Starting an async method in the module causes in case of errors
 > (node:20604) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 
 How to start it correctly?
+
+### TODOs
+
+#### Use promise queues
+
+* <https://www.npmjs.com/package/promiseq>
+
+#### Use html parser stream
+
+* <https://www.npmjs.com/package/htmlparser2>
+
+#### Implement gitlab pipeline
+
+TODO
+
+#### Create also binary artifact
+
+* <https://github.com/nexe/nexe>
+* <https://www.npmjs.com/package/pkg>
+  * <https://dev.to/jochemstoel/bundle-your-node-app-to-a-single-executable-for-windows-linux-and-osx-2c89>
+  * <https://medium.com/@jamomani/run-node-app-as-single-executable-file-on-windows-mac-or-linux-d4e9a98ef6fd>
 
 ### Executing
 

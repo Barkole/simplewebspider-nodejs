@@ -27,7 +27,12 @@
   "scripts": {
     "lint": "eslint --quiet --fix --report-unused-disable-directives src/**/*.{js,ts,tsx}",
     "start": "bash ./bin/start.sh",
-    "start-quick": "node --enable-source-maps ./dist/cli.js"
+    "start-quick": "node --enable-source-maps ./dist/cli.js",
+    "gp": "bash ./bin/git-helper.sh gp",
+    "gcp": "bash ./bin/git-helper.sh gcp",
+    "gmm": "bash ./bin/git-helper.sh gmm",
+    "gmc": "bash ./bin/git-helper.sh gmc",
+    "gbc": "bash ./bin/git-helper.sh gbc"
   },
   "devDependencies": {
     "@types/node": "^14.0.11",
