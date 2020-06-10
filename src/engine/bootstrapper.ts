@@ -36,7 +36,7 @@ class Bootstrapper implements IBootstrapper {
           (line) =>
             line && (line.startsWith(`http://`) || line.startsWith(`https://`))
         ) //
-        .forEach(database.push);
+        .forEach((line) => database.push(line));
     } catch (e) {
       throw new BootstrapError(`Bootstrapping failed`, this.config.filename, e);
     }
