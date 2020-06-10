@@ -1,6 +1,6 @@
-import { config } from "./core/config.js";
-import { logger } from "./core/logger.js";
-import { crawler } from "./engine/crawler.js";
+import { config } from "./core/config";
+import { logger } from "./core/logger";
+import { crawler } from "./engine/crawler";
 // import Errlop from "errlop";
 
 process.on(`uncaughtException`, function (err) {
