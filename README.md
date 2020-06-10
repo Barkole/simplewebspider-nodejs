@@ -154,3 +154,5 @@ For upgrade you can also dig into changes by using
 * [TypeScript Tutorial](https://www.typescriptlang.org/docs/tutorial.html)
   * [TypeScript-Node-Starter](https://github.com/microsoft/TypeScript-Node-Starter/blob/master/README.md)
 * [yarn - Creating a new project](https://classic.yarnpkg.com/en/docs/creating-a-project/)
+* Check for ECMAScript support: [node.green](https://node.green/)
+  * See also [ECMAScript 2015 (ES6) and beyond](https://nodejs.org/en/docs/es6/)
