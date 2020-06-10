@@ -15,9 +15,13 @@ class SimplerCrawler implements ICrawler {
   bootstrapper: IBootstrapper;
 
   async run(): Promise<void> {
-    logger.info(`Starting bootstrapping...`);
-    await this.bootstrapper.run(this.database);
-    // Start bots
+    try {
+      logger.info(`Starting bootstrapping...`);
+      await this.bootstrapper.run(this.database);
+      // Start bots
+    } catch (e) {
+      logger.error(`Main runner failed`, e);
+    }
   }
 
   constructor(database: IDatabase, bootstrapper: IBootstrapper) {
