@@ -1,11 +1,8 @@
 import { IsNotEmptyObject } from "class-validator";
 import { IBootstrapConfig, config } from "../core/config";
 import { checkValidateSync } from "../core/utils";
-import fs from "fs";
-import util from "util";
+import fs from "fs-extra";
 import Errlop from "errlop";
-
-const readFile = util.promisify(fs.readFile);
 
 interface IBootstrapper {
   run(database: IDatabase): Promise<void>;
@@ -13,12 +10,9 @@ interface IBootstrapper {
 
 class BootstrapError extends Errlop {
   filename: string | undefined;
-  cause: Error | undefined;
 
-  constructor(message: string, filename?: string, cause?: Error) {
+  constructor(message: string, cause?: Error) {
     super(message, cause);
-    this.filename = filename;
-    this.cause = cause;
   }
 }
 
@@ -29,7 +23,7 @@ class Bootstrapper implements IBootstrapper {
   async run(database: IDatabase): Promise<void> {
     try {
       const filename = this.config.filename;
-      const content = await readFile(filename, `utf8`);
+      const content = await fs.readFile(filename, `utf8`);
       content
         .split(/\r?\n/) //
         .filter(
@@ -38,7 +32,10 @@ class Bootstrapper implements IBootstrapper {
         ) //
         .forEach((line) => database.push(line));
     } catch (e) {
-      throw new BootstrapError(`Bootstrapping failed`, this.config.filename, e);
+      throw new BootstrapError(
+        `Bootstrapping failed [file=${this.config.filename}`,
+        e
+      );
     }
   }
 
