@@ -20,20 +20,6 @@
 
 ### Known issues
 
-#### Debugging is not possible under Windows
-
-```txt
-> Executing task: d:\vscode\simplewebspider-nodejs\node_modules\.bin\tsc.cmd -p d:\vscode\simplewebspider-nodejs\tsconfig.json <
-
-/usr/bin/bash: d:vscodesimplewebspider-nodejsnode_modules.bintsc.cmd: command not found
-The terminal process terminated with exit code: 127
-```
-
-See also
-
-* <https://stackoverflow.com/questions/49910024/vscode-path-generation-failure-in-run-build-task-tsc-build>
-* <https://github.com/Microsoft/vscode/issues/35593>
-
 #### Auto compile on save is not working
 
 Most likely same issue as above. But no errors are shown.
@@ -108,6 +94,10 @@ Check for
    ```sh
    > yarn start-quick
    ```
+
+### Debugging
+
+Launch `Run npm start`
 
 ### Managing dependencies
 

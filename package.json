@@ -26,8 +26,9 @@
   },
   "scripts": {
     "lint": "eslint --quiet --fix --report-unused-disable-directives src/**/*.{js,ts,tsx}",
-    "start": "bash ./bin/start.sh",
-    "start-quick": "node --enable-source-maps ./dist/cli.js",
+    "start": "yarn build && bash ./bin/start.sh",
+    "start-quick": "bash ./bin/start.sh",
+    "build": "bash ./bin/build.sh",
     "gp": "bash ./bin/git-helper.sh gp",
     "gcp": "bash ./bin/git-helper.sh gcp",
     "gmm": "bash ./bin/git-helper.sh gmm",

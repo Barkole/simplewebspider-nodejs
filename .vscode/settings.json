@@ -15,4 +15,5 @@
   "files.eol": "\n",
   "files.autoSave": "afterDelay",
   "typescript.tsdk": "node_modules\\typescript\\lib",
+  "npm.packageManager": "yarn",
 }

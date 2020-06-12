@@ -16,26 +16,5 @@ if ((${BASH_VERSION%%.*} <= 3)) || [[ ${BASH_VERSION%.*} == 4.0 ]]; then
 fi
 trap 'handle_error $LINENO ${BASH_LINENO[@]}' ERR
 
-#rm -rf ./dist
-echo " => yarn install..."
-yarn install
-echo " => yarn lint..."
-yarn lint
-echo " => tsc..."
-tsc --resolveJsonModule
-echo " => copy resources..."
-cp -R ./resources ./dist/
-
-echo " => create env override..."
-echo "# Auto generated" > ./dist/.env.override
-echo BUILD_VERSION=${npm_package_version} >> ./dist/.env.override
-echo BUILD_NAME=${npm_package_name} >> ./dist/.env.override
-echo BUILD_TIMESTAMP=`date -Is -u` >> ./dist/.env.override
-if [[ -z $(git status -s) ]]; then
-    echo BUILD_SHA=`git rev-parse HEAD` >> ./dist/.env.override
-else
-    echo BUILD_SHA=`git rev-parse HEAD`-DIRTY >> ./dist/.env.override
-fi
-
 echo " => node..."
 node --enable-source-maps ./dist/cli.js
