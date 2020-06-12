@@ -5,8 +5,13 @@ import { crawler } from "./engine/crawler";
 
 process.on(`uncaughtException`, function (err) {
   // eslint-disable-next-line no-console
-  console.log(`\n#####\n\nUncaught error`, err);
-  logger.error(`\n##\nUncaught error`, err);
+  console.warn(`Uncaught error`, err);
+  logger.warn(`Uncaught error`, err);
+});
+process.on(`unhandledRejection`, (reason) => {
+  // eslint-disable-next-line no-console
+  console.warn(`Unhandled Rejection`, reason);
+  logger.warn(`Unhandled Rejection`, reason);
 });
 
 logger.info(`Build`, config.build);
