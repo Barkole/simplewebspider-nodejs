@@ -83,6 +83,14 @@ Check for
 * Unit testing
 * ...
 
+##### Analyze startup
+
+* <https://github.com/GoogleCloudPlatform/require-so-slow>
+
+##### Allow multiple modes: pqueue vs. workers
+
+* <https://github.com/sinclairzx81/threadbox>
+
 ### Executing
 
 * Normal and safe start:
