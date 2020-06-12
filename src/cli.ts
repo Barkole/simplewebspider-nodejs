@@ -1,5 +1,5 @@
-import { config } from "./core/config";
 import { logger } from "./core/logger";
+import { config } from "./core/config";
 import { crawler } from "./engine/crawler";
 import { processOn } from "./core/processOn";
 
