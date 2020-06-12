@@ -8,10 +8,9 @@
 
 import { createLogger, format, transports } from "winston";
 import { consoleFormat } from "winston-console-format";
-import { config } from "./config";
 
 export const logger = createLogger({
-  level: config.log.level,
+  level: process.env.LOG_LEVEL || `info`,
   format: format.combine(
     format.timestamp(),
     format.ms(),
@@ -20,10 +19,11 @@ export const logger = createLogger({
     format.json()
   ),
   defaultMeta: {
-    buildName: config.build.name,
-    buildTimestamp: config.build.timestamp,
-    buildVersion: config.build.version,
-    buildSha: config.build.sha,
+    // TODO Inject meta afterwards
+    // buildName: config.build.name,
+    // buildTimestamp: config.build.timestamp,
+    // buildVersion: config.build.version,
+    // buildSha: config.build.sha,
   },
   transports: [
     new transports.Console({

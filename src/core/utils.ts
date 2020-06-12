@@ -1,12 +1,18 @@
 import { validateSync, ValidationError } from "class-validator";
 
 class ValidationCheckError extends Error {
-  errors: ValidationError[] | undefined;
+  errors: string[] | undefined;
 
   constructor(message?: string, errors?: ValidationError[]) {
     super(message);
     this.name = `ValidationError`;
-    this.errors = errors;
+    this.errors =
+      errors &&
+      errors.map((entry) => {
+        const property = JSON.stringify(entry.property);
+        const constraints = JSON.stringify(entry.constraints);
+        return `{"property": ${property}, "contraints": ${constraints}}`;
+      });
   }
 }
 
