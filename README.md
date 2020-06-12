@@ -91,6 +91,10 @@ Check for
 
 * <https://github.com/sinclairzx81/threadbox>
 
+#### Replace bash scripts by node.js only scripts
+
+* Workspaces?
+
 ### Executing
 
 * Normal and safe start:
