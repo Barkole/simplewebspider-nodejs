@@ -1,0 +1,29 @@
+image: "node:12-alpine"
+
+before_script:
+  - apk add yarn
+  - yarn global add typescript
+
+stages:
+  - build
+  - package
+
+Build:Node:
+  stage: build
+  script:
+    - yarn build
+  artifacts:
+    paths:
+      - dist/
+      - npm_modules/
+
+Package:Binaries:
+  stage: build
+  script:
+    - yarn global add pkg
+    - yarn build-binaries
+  artifacts:
+    paths:
+      - dist-binaries/
+  dependencies:
+    - Build:Node
