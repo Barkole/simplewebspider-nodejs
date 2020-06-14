@@ -1,5 +1,5 @@
 import { IsInt, Min, Max } from "class-validator";
-import { checkValidateSync } from "../utils";
+import { checkValidateSync } from "../../utils";
 import { IHttpConfig } from "./IHttpConfig";
 export class HttpConfig implements IHttpConfig {
   constructor(that: IHttpConfig) {

@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator";
-import { checkValidateSync } from "../utils";
+import { checkValidateSync } from "../../utils";
 import { IHttpThrottlerConfig } from "./IHttpThrottlerConfig";
 import { HttpThrottlerConfig } from "./HttpThrottlerConfig";
 import { IRequestThrottlerConfig } from "./IRequestThrottlerConfig";

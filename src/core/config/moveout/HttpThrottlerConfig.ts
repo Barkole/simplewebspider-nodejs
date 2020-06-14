@@ -1,5 +1,5 @@
 import { IsInt, IsPositive, Min } from "class-validator";
-import { checkValidateSync } from "../utils";
+import { checkValidateSync } from "../../utils";
 import { IHttpThrottlerConfig } from "./IHttpThrottlerConfig";
 export class HttpThrottlerConfig implements IHttpThrottlerConfig {
   constructor(that: IHttpThrottlerConfig) {

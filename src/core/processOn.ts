@@ -22,11 +22,11 @@ function processOn(): void {
     console.warn(`Uncaught error`, err);
     logger.warn(`Uncaught error`, err);
   });
-  process.on(`uncaughtExceptionMonitor`, function (err) {
-    // eslint-disable-next-line no-console
-    console.warn(`Uncaught monitor error`, err);
-    logger.warn(`Uncaught monitor error`, err);
-  });
+  // process.on(`uncaughtExceptionMonitor`, function (err) { // What is the difference to uncaughtException?
+  //   // eslint-disable-next-line no-console
+  //   console.warn(`Uncaught monitor error`, err);
+  //   logger.warn(`Uncaught monitor error`, err);
+  // });
   process.on(`unhandledRejection`, (reason) => {
     // eslint-disable-next-line no-console
     console.warn(`Unhandled Rejection ${JSON.stringify(reason)}`);

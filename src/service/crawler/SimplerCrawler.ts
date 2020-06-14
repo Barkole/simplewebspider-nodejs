@@ -1,14 +1,11 @@
 import { IsNotEmptyObject } from "class-validator";
-import { checkValidateSync } from "../core/utils";
-import { database } from "../database/memory";
-import { bootstrapper, IBootstrapper } from "./bootstrapper";
-import { logger } from "../core/logger";
+import { IBootstrapper } from "../bootstrap";
+import { logger } from "../../core/logger";
+import { IDatabase } from "../database";
+import { ICrawler } from "./ICrawler";
+import { checkValidateSync } from "../../core/utils";
 
-interface ICrawler {
-  run(): Promise<void>;
-}
-
-class SimplerCrawler implements ICrawler {
+export class SimplerCrawler implements ICrawler {
   @IsNotEmptyObject()
   database: IDatabase;
   @IsNotEmptyObject()
@@ -30,7 +27,3 @@ class SimplerCrawler implements ICrawler {
     checkValidateSync(this);
   }
 }
-
-const crawler = new SimplerCrawler(database, bootstrapper);
-
-export { crawler };

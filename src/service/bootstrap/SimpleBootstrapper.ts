@@ -1,22 +1,12 @@
 import { IsNotEmptyObject } from "class-validator";
-import { IBootstrapConfig, config } from "../core/config";
-import { checkValidateSync } from "../core/utils";
 import fs from "fs-extra";
-import Errlop from "errlop";
+import { IDatabase } from "../database";
+import { IBootstrapper } from "./IBootstrapper";
+import { BootstrapError } from "./BootstrapError";
+import { IBootstrapConfig } from "./IBootstrapConfig";
+import { checkValidateSync } from "../../core/utils";
 
-interface IBootstrapper {
-  run(database: IDatabase): Promise<void>;
-}
-
-class BootstrapError extends Errlop {
-  filename: string | undefined;
-
-  constructor(message: string, cause?: Error) {
-    super(message, cause);
-  }
-}
-
-class Bootstrapper implements IBootstrapper {
+export class SimpleBootstrapper implements IBootstrapper {
   @IsNotEmptyObject()
   config: IBootstrapConfig;
 
@@ -44,7 +34,3 @@ class Bootstrapper implements IBootstrapper {
     checkValidateSync(this);
   }
 }
-
-const bootstrapper = new Bootstrapper(config.bootstrap);
-
-export { bootstrapper, IBootstrapper };

@@ -1,5 +1,5 @@
 import { IsInt, IsPositive, Min } from "class-validator";
-import { checkValidateSync } from "../utils";
+import { checkValidateSync } from "../../utils";
 import { IRequestThrottlerConfig } from "./IRequestThrottlerConfig";
 export class RequestThrottlerConfig implements IRequestThrottlerConfig {
   constructor(that: IRequestThrottlerConfig) {

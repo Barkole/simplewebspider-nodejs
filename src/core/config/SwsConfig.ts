@@ -1,18 +1,15 @@
 import { IsNotEmpty } from "class-validator";
 import { checkValidateSync } from "../utils";
-import { IDatabaseConfig } from "./IDatabaseConfig";
-import { DatabaseConfig } from "./DatabaseConfig";
-import { ILogConfig } from "./ILogConfig";
-import { LogConfig } from "./LogConfig";
-import { IBootstrapConfig } from "./IBootstrapConfig";
-import { BootstrapConfig } from "./BootstrapConfig";
-import { IThrottlerConfig } from "./IThrottlerConfig";
-import { ThrottlerConfig } from "./ThrottlerConfig";
-import { IHttpConfig } from "./IHttpConfig";
-import { HttpConfig } from "./HttpConfig";
+import { IDatabaseConfig, DatabaseConfig } from "../../service/database";
+import { ILogConfig, LogConfig } from "../logger";
+import { IBootstrapConfig, BootstrapConfig } from "../../service/bootstrap";
+import { ThrottlerConfig } from "./moveout/ThrottlerConfig";
+import { IHttpConfig } from "./moveout/IHttpConfig";
+import { HttpConfig } from "./moveout/HttpConfig";
 import { IBuildConfig } from "./IBuildConfig";
 import { BuildConfig } from "./BuildConfig";
 import { ISwsConfig } from "./ISwsConfig";
+import { IThrottlerConfig } from "./moveout/IThrottlerConfig";
 
 export class SwsConfig implements ISwsConfig {
   @IsNotEmpty()

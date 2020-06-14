@@ -1,5 +1,5 @@
 import { IsInt, IsPositive } from "class-validator";
-import { checkValidateSync } from "../utils";
+import { checkValidateSync } from "../../core/utils";
 import { IDatabaseConfig } from "./IDatabaseConfig";
 export class DatabaseConfig implements IDatabaseConfig {
   @IsPositive()

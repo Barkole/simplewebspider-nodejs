@@ -1,9 +1,9 @@
-import { IDatabaseConfig } from "./IDatabaseConfig";
-import { ILogConfig } from "./ILogConfig";
-import { IBootstrapConfig } from "./IBootstrapConfig";
-import { IThrottlerConfig } from "./IThrottlerConfig";
-import { IHttpConfig } from "./IHttpConfig";
+import { IDatabaseConfig } from "../../service/database";
+import { ILogConfig } from "../logger";
+import { IBootstrapConfig } from "../../service/bootstrap";
+import { IHttpConfig } from "./moveout/IHttpConfig";
 import { IBuildConfig } from "./IBuildConfig";
+import { IThrottlerConfig } from "./moveout/IThrottlerConfig";
 export interface ISwsConfig {
   readonly username: string;
   readonly test: string;

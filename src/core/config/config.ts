@@ -4,8 +4,7 @@ import fs from "fs";
 import { EnvFileMissingError } from "./EnvFileMissingError";
 import { SwsConfig } from "./SwsConfig";
 import { InvalidConfigurationError } from "./InvalidConfigurationError";
-import { LogLevel } from "./LogLevel";
-import { UnknownLogLevelError } from "./UnknownLogLevelError";
+import { toLogLevel } from "../logger";
 
 function loadConfig(filename: string): void {
   if (!fs.existsSync(filename)) {
@@ -18,16 +17,6 @@ function loadConfig(filename: string): void {
   }
 }
 
-function logLevel(logLevel: string | undefined): LogLevel | undefined {
-  if (logLevel === undefined || logLevel === null || logLevel === ``) {
-    return undefined;
-  }
-  if (logLevel === `info` || logLevel === `debug`) {
-    return logLevel;
-  }
-  throw new UnknownLogLevelError(`Unknown log level`, logLevel);
-}
-
 function initializeConfiguration(): SwsConfig {
   try {
     dotenv.config();
@@ -37,7 +26,7 @@ function initializeConfiguration(): SwsConfig {
       username: process.env.USERNAME!,
       test: process.env.TEST!,
       log: {
-        level: logLevel(process.env.LOG_LEVEL) || `info`,
+        level: toLogLevel(process.env.LOG_LEVEL) || `info`,
       },
       bootstrap: {
         filename: process.env.BOOTSTRAP_FILE || `bootstrap.txt`,
@@ -73,10 +62,4 @@ function initializeConfiguration(): SwsConfig {
 
 const config = initializeConfiguration();
 
-export {
-  config,
-  EnvFileMissingError,
-  UnknownLogLevelError,
-  InvalidConfigurationError,
-  LogLevel,
-};
+export { config };
