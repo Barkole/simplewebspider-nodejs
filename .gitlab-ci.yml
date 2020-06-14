@@ -12,10 +12,10 @@ cache:
 
 before_script:
   - apk add yarn bash
-  - yarn cache list
 
 stages:
   - build
+  - test
   - package
 
 Build:Node:
@@ -35,6 +35,18 @@ Build:Node:
     key: "${CI_PROJECT_NAME}"
     policy: pull-push
 
+Test:Outdated:
+  stage: test
+  script:
+    - yarn outdated | tee outdated.txt
+  artifacts:
+    paths:
+      - outdated.txt
+  dependencies:
+    - Build:Node
+  needs:
+    - Build:Node
+
 Package:Binaries:
   stage: package
   script:
@@ -44,6 +56,8 @@ Package:Binaries:
     paths:
       - dist-binaries/
   dependencies:
+    - Build:Node
+  needs:
     - Build:Node
 
 Package:Node.js:
@@ -60,4 +74,6 @@ Package:Node.js:
       - .env.example
       - bootstrap.txt
   dependencies:
+    - Build:Node
+  needs:
     - Build:Node
