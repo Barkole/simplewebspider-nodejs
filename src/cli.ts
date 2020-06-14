@@ -1,4 +1,4 @@
-import { logger } from "./core/logger";
+import { log } from "./core/logger";
 import { config } from "./core/config";
 import { processOn } from "./core/processOn";
 import { LimitedMemoryDatabase } from "./service/database";
@@ -6,18 +6,18 @@ import { SimpleBootstrapper } from "./service/bootstrap";
 import { SimplerCrawler } from "./service/crawler";
 
 // Update loglevel after loading configuration
-logger.level = config.log.level;
+log.level = config.log.level;
 
-logger.debug(`Initiate process on listeners...`);
+log.debug(`Initiate process on listeners...`);
 processOn();
 
-logger.info(`Build`, config.build);
-logger.debug(`Configuration`, config);
+log.info(`Build`, config.build);
+log.debug(`Configuration`, config);
 
-logger.info(`Wire services`);
+log.info(`Wire services`);
 const bootstrapper = new SimpleBootstrapper(config.bootstrap);
 const database = new LimitedMemoryDatabase(config.database);
 const crawler = new SimplerCrawler(database, bootstrapper);
 
-logger.info(`Starting crawler...`);
+log.info(`Starting crawler...`);
 crawler.run();

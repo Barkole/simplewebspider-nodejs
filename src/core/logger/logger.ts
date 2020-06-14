@@ -9,7 +9,7 @@
 import { createLogger, format, transports } from "winston";
 import { consoleFormat } from "winston-console-format";
 
-export const logger = createLogger({
+export const log = createLogger({
   level: process.env.LOG_LEVEL || `info`,
   format: format.combine(
     format.timestamp(),
