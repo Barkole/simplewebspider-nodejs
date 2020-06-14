@@ -19,7 +19,9 @@ trap 'handle_error $LINENO ${BASH_LINENO[@]}' ERR
 # Must no clean up, as we use incremental compilation
 #echo " => cleaning ./dist"
 #rm -rf ./dist
-#mkdir -p ./dist
+
+echo " => dist folder..."
+mkdir -p ./dist
 
 echo " => create env override..."
 echo "# Auto generated" > ./dist/.env.override
