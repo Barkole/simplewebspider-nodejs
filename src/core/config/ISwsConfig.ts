@@ -6,7 +6,6 @@ import { IBuildConfig } from "./IBuildConfig";
 import { IThrottlerConfig } from "./moveout/IThrottlerConfig";
 export interface ISwsConfig {
   readonly username: string;
-  readonly test: string;
   readonly log: ILogConfig;
   readonly bootstrap: IBootstrapConfig;
   readonly throttler: IThrottlerConfig;

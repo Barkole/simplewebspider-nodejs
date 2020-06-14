@@ -1,4 +1,4 @@
-import Errlop from "errlop/compiled-types";
+import Errlop from "errlop";
 
 export class UnknownLogLevelError extends Errlop {
   logLevel: string | undefined;

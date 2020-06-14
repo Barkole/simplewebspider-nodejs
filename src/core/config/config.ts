@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import dotenv from "dotenv";
-import fs from "fs";
+import fs from "fs-extra";
 import { EnvFileMissingError } from "./EnvFileMissingError";
 import { SwsConfig } from "./SwsConfig";
 import { InvalidConfigurationError } from "./InvalidConfigurationError";
 import { toLogLevel } from "../logger";
+import { envOverride } from "../../resources";
 
 function loadConfig(filename: string): void {
   if (!fs.existsSync(filename)) {
@@ -20,11 +21,10 @@ function loadConfig(filename: string): void {
 function initializeConfiguration(): SwsConfig {
   try {
     dotenv.config();
-    loadConfig(`${__dirname}/../.env.override`);
+    loadConfig(envOverride);
 
     return new SwsConfig({
       username: process.env.USERNAME!,
-      test: process.env.TEST!,
       log: {
         level: toLogLevel(process.env.LOG_LEVEL),
       },

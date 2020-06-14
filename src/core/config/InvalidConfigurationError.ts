@@ -1,4 +1,4 @@
-import Errlop from "errlop/compiled-types";
+import Errlop from "errlop";
 
 export class InvalidConfigurationError extends Errlop {
   e: Error | undefined;

@@ -15,8 +15,6 @@ export class SwsConfig implements ISwsConfig {
   @IsNotEmpty()
   username: string;
   @IsNotEmpty()
-  test: string;
-  @IsNotEmpty()
   log: ILogConfig;
   @IsNotEmpty()
   bootstrap: IBootstrapConfig;
@@ -31,7 +29,6 @@ export class SwsConfig implements ISwsConfig {
 
   constructor(that: ISwsConfig) {
     this.username = that.username;
-    this.test = that.test;
     this.log = new LogConfig(that.log);
     this.bootstrap = new BootstrapConfig(that.bootstrap);
     this.throttler = new ThrottlerConfig(that.throttler);

@@ -16,5 +16,10 @@ if ((${BASH_VERSION%%.*} <= 3)) || [[ ${BASH_VERSION%.*} == 4.0 ]]; then
 fi
 trap 'handle_error $LINENO ${BASH_LINENO[@]}' ERR
 
-echo " => node..."
-node --enable-source-maps ${npm_package_bin_simplewebspider_nodejs}
+
+echo " => cleaning ./dist"
+rm -rf ./dist
+mkdir -p ./dist
+
+echo " => cleaning ts build info"
+rm -rf tsconfig.tsbuildinfo

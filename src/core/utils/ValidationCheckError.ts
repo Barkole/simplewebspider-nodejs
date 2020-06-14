@@ -1,5 +1,5 @@
 import { ValidationError } from "class-validator";
-import Errlop from "errlop/compiled-types";
+import Errlop from "errlop";
 export class ValidationCheckError extends Errlop {
   errors: string[] | undefined;
 

@@ -16,16 +16,10 @@ if ((${BASH_VERSION%%.*} <= 3)) || [[ ${BASH_VERSION%.*} == 4.0 ]]; then
 fi
 trap 'handle_error $LINENO ${BASH_LINENO[@]}' ERR
 
+# Must no clean up, as we use incremental compilation
+#echo " => cleaning ./dist"
 #rm -rf ./dist
-
-echo " => yarn install..."
-yarn install
-echo " => yarn lint..."
-yarn lint
-echo " => tsc..."
-tsc --resolveJsonModule
-echo " => copy resources..."
-cp -R ./resources ./dist/
+#mkdir -p ./dist
 
 echo " => create env override..."
 echo "# Auto generated" > ./dist/.env.override
@@ -37,3 +31,7 @@ if [[ -z $(git status -s) ]]; then
 else
     echo BUILD_SHA=`git rev-parse HEAD`-DIRTY >> ./dist/.env.override
 fi
+cat ./dist/.env.override
+
+echo " => tsc..."
+tsc --resolveJsonModule
