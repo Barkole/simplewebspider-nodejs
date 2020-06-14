@@ -1,7 +1,7 @@
 image: "node:12-alpine"
 
 before_script:
-  - apk add yarn
+  - apk add yarn bash
   - yarn global add typescript
 
 stages:
