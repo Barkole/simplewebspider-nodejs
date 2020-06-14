@@ -18,7 +18,7 @@ Build:Node:
       - npm_modules/
 
 Package:Binaries:
-  stage: build
+  stage: package
   script:
     - yarn global add pkg
     - yarn build-binaries
