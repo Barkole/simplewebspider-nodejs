@@ -11,9 +11,6 @@ cache:
 
 before_script:
   - apk add yarn bash
-  - yarn global add typescript
-  - yarn cache dir
-  - pwd
 
 stages:
   - build
@@ -23,6 +20,7 @@ Build:Node:
   stage: build
   script:
     - apk add git
+    - yarn global add typescript
     - yarn build
   artifacts:
     paths:
@@ -43,5 +41,21 @@ Package:Binaries:
   artifacts:
     paths:
       - dist-binaries/
+  dependencies:
+    - Build:Node
+
+Package:Node.js:
+  stage: package
+  script:
+    - yarn install --production --frozen-lockfile
+  artifacts:
+    paths:
+      - dist/
+      - node_modules/
+      - package.json
+      - LICENSE
+      - READMDE.md
+      - .env.example
+      - bootstrap.txt
   dependencies:
     - Build:Node
