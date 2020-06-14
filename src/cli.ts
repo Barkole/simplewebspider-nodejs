@@ -6,6 +6,7 @@ import { SimpleBootstrapper } from "./service/bootstrap";
 import { SimplerCrawler } from "./service/crawler";
 
 // Update loglevel after loading configuration
+// updateLogger(config.log); // TypeError: logger_1.updateLogger is not a function
 logger.level = config.log.level;
 
 logger.debug(`Initiate process on listeners...`);
