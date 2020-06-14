@@ -8,6 +8,7 @@ cache:
   paths:
     - ".cache/yarn"
   key: "${CI_PROJECT_NAME}"
+  policy: pull
 
 before_script:
   - apk add yarn bash
@@ -28,6 +29,12 @@ Build:Node:
     paths:
       - dist/
       - node_modules/
+  cache:
+    untracked: true
+    paths:
+      - ".cache/yarn"
+    key: "${CI_PROJECT_NAME}"
+    policy: pull-push
 
 Package:Binaries:
   stage: package
