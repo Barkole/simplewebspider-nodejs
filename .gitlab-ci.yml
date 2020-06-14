@@ -12,6 +12,7 @@ cache:
 
 before_script:
   - apk add yarn bash
+  - yarn cache list
 
 stages:
   - build
