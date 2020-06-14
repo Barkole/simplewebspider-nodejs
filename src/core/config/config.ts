@@ -24,7 +24,6 @@ function initializeConfiguration(): SwsConfig {
     loadConfig(envOverride);
 
     return new SwsConfig({
-      username: process.env.USERNAME!,
       log: {
         level: toLogLevel(process.env.LOG_LEVEL),
       },

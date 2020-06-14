@@ -13,8 +13,6 @@ import { IThrottlerConfig } from "./moveout/IThrottlerConfig";
 
 export class SwsConfig implements ISwsConfig {
   @IsNotEmpty()
-  username: string;
-  @IsNotEmpty()
   log: ILogConfig;
   @IsNotEmpty()
   bootstrap: IBootstrapConfig;
@@ -28,7 +26,6 @@ export class SwsConfig implements ISwsConfig {
   database: IDatabaseConfig;
 
   constructor(that: ISwsConfig) {
-    this.username = that.username;
     this.log = new LogConfig(that.log);
     this.bootstrap = new BootstrapConfig(that.bootstrap);
     this.throttler = new ThrottlerConfig(that.throttler);
