@@ -26,7 +26,7 @@ function initializeConfiguration(): SwsConfig {
       username: process.env.USERNAME!,
       test: process.env.TEST!,
       log: {
-        level: toLogLevel(process.env.LOG_LEVEL) || `info`,
+        level: toLogLevel(process.env.LOG_LEVEL),
       },
       bootstrap: {
         filename: process.env.BOOTSTRAP_FILE || `bootstrap.txt`,

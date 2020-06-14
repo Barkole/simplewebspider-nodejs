@@ -8,9 +8,15 @@
 
 import { createLogger, format, transports } from "winston";
 import { consoleFormat } from "winston-console-format";
+import { LogConfig } from "./LogConfig";
+import { toLogLevel } from "./toLogLevel";
+
+const logConfig = new LogConfig({
+  level: toLogLevel(process.env.LOG_LEVEL),
+});
 
 export const logger = createLogger({
-  level: process.env.LOG_LEVEL || `info`,
+  level: logConfig.level,
   format: format.combine(
     format.timestamp(),
     format.ms(),
