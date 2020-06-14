@@ -4,7 +4,6 @@ variables:
   YARN_CACHE_FOLDER: "${CI_PROJECT_DIR}/.cache/yarn"
 
 cache:
-  untracked: true
   paths:
     - ".cache/yarn"
   key: "${CI_PROJECT_NAME}"
