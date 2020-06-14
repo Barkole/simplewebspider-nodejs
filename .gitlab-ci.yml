@@ -8,6 +8,7 @@ cache:
     - ".cache/yarn"
   key: "${CI_PROJECT_NAME}"
   policy: pull
+  untracked: false
 
 before_script:
   - apk add yarn bash
