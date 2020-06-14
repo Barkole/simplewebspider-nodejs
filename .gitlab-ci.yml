@@ -55,7 +55,7 @@ Package:Node.js:
       - node_modules/
       - package.json
       - LICENSE
-      - READMDE.md
+      - README.md
       - .env.example
       - bootstrap.txt
   dependencies:
