@@ -1,5 +1,5 @@
 import { IsPositive, IsInt, IsDefined } from "class-validator";
-import { log } from "../../core/logger";
+import { logger } from "../../core/logger";
 import { IDatabase } from "./IDatabase";
 import { checkValidateSync } from "../../core/utils";
 import { IDatabaseConfig } from "./IDatabaseConfig";
@@ -17,7 +17,7 @@ class LimitedMemoryDatabase implements IDatabase {
   }
 
   push(value: string): this {
-    log.debug(`Add entry: ${value}`);
+    logger.debug(`Add entry: ${value}`);
     this.entries.push(value);
     if (this.entries.length > this.size) {
       this.entries.shift();
