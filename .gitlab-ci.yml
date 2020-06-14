@@ -7,8 +7,7 @@ cache:
   untracked: true
   paths:
     - ".cache/yarn"
-  key:
-    - "${CI_PROJECT_NAME}"
+  key: "${CI_PROJECT_NAME}"
 
 before_script:
   - apk add yarn bash
