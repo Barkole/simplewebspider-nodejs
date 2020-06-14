@@ -11,8 +11,8 @@ logger.level = config.log.level;
 logger.debug(`Initiate process on listeners...`);
 processOn();
 
-logger.info(`Build`, config.build);
-logger.debug(`Configuration`, config);
+logger.info(`Build ${JSON.stringify(config.build)}`);
+logger.debug(`Configuration ${JSON.stringify(config)}`);
 
 logger.info(`Wire services`);
 const bootstrapper = new SimpleBootstrapper(config.bootstrap);
