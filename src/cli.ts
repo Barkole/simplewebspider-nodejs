@@ -14,9 +14,10 @@ processOn();
 logger.info(`Build`, config.build);
 logger.debug(`Configuration`, config);
 
+logger.info(`Wire services`);
 const bootstrapper = new SimpleBootstrapper(config.bootstrap);
 const database = new LimitedMemoryDatabase(config.database);
+const crawler = new SimplerCrawler(database, bootstrapper);
 
 logger.info(`Starting crawler...`);
-const crawler = new SimplerCrawler(database, bootstrapper);
 crawler.run();
