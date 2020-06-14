@@ -22,11 +22,12 @@ stages:
 Build:Node:
   stage: build
   script:
+    - apk add git
     - yarn build
   artifacts:
     paths:
       - dist/
-      - npm_modules/
+      - node_modules/
 
 Package:Binaries:
   stage: package
