@@ -20,6 +20,9 @@ export class SimplerCrawler implements ICrawler {
 
   async run(): Promise<void> {
     try {
+      logger.info(`Bootstrapping...`);
+      await this.bootstrapper.run(this.database);
+
       // eslint-disable-next-line no-constant-condition
       while (true) {
         // TODO Implement throttler
