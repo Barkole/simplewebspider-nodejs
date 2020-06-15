@@ -7,7 +7,7 @@ function sleep(ms: number): Promise<void> {
 export class SimpleExctractor implements IExtractor {
   async extract(url: string): Promise<string[]> {
     // TODO Implement this
-    await sleep(1000);
+    await sleep(10000);
     return [url];
   }
 }
