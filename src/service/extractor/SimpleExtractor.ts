@@ -47,6 +47,7 @@ function createUrlHandler(
     ): void {
       logger.silly(`OpenTag: ${name} - ${JSON.stringify(attribs)}`);
       let newUrl: string | undefined = undefined;
+      // TODO Implement RSS and ATOM Feed support
       if (name === `a` && attribs && attribs[`href`]) {
         newUrl = attribs[`href`];
       } else if (name === `img` && attribs && attribs[`src`]) {
