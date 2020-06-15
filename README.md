@@ -115,7 +115,7 @@ Only use
 
 * `yarn add`
 * `yarn remove`
-* `yarn upgrade --interactive`
+* `yarn upgrade-interactive --latest`
 
 ### Evaluate new dependency
 
