@@ -38,19 +38,6 @@ Most likely same issue as above. But no errors are shown.
 * <https://www.npmjs.com/package/module-alias>
 * <https://github.com/vercel/pkg/issues/896>
 
-#### Use promise queues
-
-* <https://github.com/sindresorhus/promise-fun>
-  * <https://github.com/sindresorhus/p-queue>
-  * <https://www.npmjs.com/package/p-limit>
-  * <https://github.com/sindresorhus/p-throttle>
-  * <https://github.com/sindresorhus/p-timeout>
-  * <https://github.com/sindresorhus/p-forever>
-  * <https://github.com/sindresorhus/p-whilst>
-* <https://github.com/promise-queue/promise-queue>
-* <https://www.npmjs.com/package/promiseq>
-* <https://www.npmtrends.com/p-queue-vs-promise-queue-vs-queue-promise-vs-promise-pool-vs-promise-limit-vs-p-limit-vs-async-promise-queue-vs-p-throttle>
-
 #### Use html parser stream
 
 * <https://www.npmjs.com/package/got>
