@@ -1,4 +1,4 @@
-import { IsNotEmptyObject } from "class-validator";
+import { IsDefined } from "class-validator";
 import fs from "fs-extra";
 import { IDatabase } from "../database";
 import { IBootstrapper } from "./IBootstrapper";
@@ -7,7 +7,7 @@ import { IBootstrapConfig } from "./IBootstrapConfig";
 import { checkValidateSync } from "../../core/utils";
 
 export class SimpleBootstrapper implements IBootstrapper {
-  @IsNotEmptyObject()
+  @IsDefined()
   config: IBootstrapConfig;
 
   async run(database: IDatabase): Promise<void> {
