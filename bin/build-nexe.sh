@@ -27,7 +27,7 @@ rm -rf ${DIST}
 mkdir -p ${DIST}
 
 echo " => Creating binaries"
-nexe package.json -r "./dist/**/*" -r "./node_module/**/*" -t windows-x64-${NODE_VERSION} -o ${DIST}/sws-windows-x64y
+nexe package.json -r "./dist/**/*" -r "./node_module/**/*" -t windows-x64-${NODE_VERSION} -o ${DIST}/sws-windows-x64
 
 echo " => Created binaries"
 ls -la ${DIST}
