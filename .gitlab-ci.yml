@@ -47,11 +47,11 @@ Test:Outdated:
   needs:
     - Build:Node
 
-Package:Binaries:
+Package:Pkg:
   stage: package
   script:
     - yarn global add pkg
-    - yarn build-binaries
+    - yarn build-pkg
   artifacts:
     paths:
       - dist-binaries/
