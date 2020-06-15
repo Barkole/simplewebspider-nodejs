@@ -60,7 +60,7 @@ function createUrlHandler(
   };
 }
 
-export class SimpleExctractor implements IExtractor {
+export class SimpleExtractor implements IExtractor {
   @IsInt()
   @Min(0)
   @Max(Number.MAX_SAFE_INTEGER)

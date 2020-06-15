@@ -1,16 +1,12 @@
 import { IsDefined } from "class-validator";
 import Errlop from "errlop";
 import { logger } from "../../core/logger";
-import { checkValidateSync, randomInt } from "../../core/utils";
+import { checkValidateSync } from "../../core/utils";
 import { IBootstrapper } from "../bootstrap";
 import { IDatabase } from "../database";
 import { IExtractor } from "../extractor";
 import { IQueue } from "../queue";
 import { ICrawler } from "./ICrawler";
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export class SimplerCrawler implements ICrawler {
   @IsDefined()
@@ -35,9 +31,6 @@ export class SimplerCrawler implements ICrawler {
         }
 
         await this.queue.add(() => this.execute(url));
-
-        // TODO Implement throttler
-        await sleep(randomInt(1000, 10000));
       }
     } catch (e) {
       logger.error(`Main runner failed`, e);

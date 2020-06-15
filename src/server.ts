@@ -4,8 +4,8 @@ import { processOn } from "./core/processOn";
 import { SimpleBootstrapper } from "./service/bootstrap";
 import { SimplerCrawler } from "./service/crawler";
 import { LimitedMemoryDatabase } from "./service/database";
-import { SimpleExctractor as SimpleExtractor } from "./service/extractor";
-import { PromiseQueue } from "./service/queue";
+import { SimpleExtractor } from "./service/extractor";
+import { PromiseQueue, ThrottlerQueue } from "./service/queue";
 
 // Update loglevel after loading configuration
 // updateLogger(config.log); // TypeError: logger_1.updateLogger is not a function
@@ -22,7 +22,13 @@ const bootstrapper = new SimpleBootstrapper(config.bootstrap);
 const database = new LimitedMemoryDatabase(config.database);
 const extractor = new SimpleExtractor();
 const queue = new PromiseQueue(config.queue);
-const crawler = new SimplerCrawler(database, bootstrapper, extractor, queue);
+const throttlerQueue = new ThrottlerQueue(queue, config.throttlerQueue);
+const crawler = new SimplerCrawler(
+  database,
+  bootstrapper,
+  extractor,
+  throttlerQueue
+);
 
 logger.info(`Starting crawler...`);
 crawler.run();

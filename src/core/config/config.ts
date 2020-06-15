@@ -24,23 +24,26 @@ function initializeConfiguration(): SwsConfig {
     loadConfig(envOverride);
 
     return new SwsConfig({
-      log: {
-        level: toLogLevel(process.env.LOG_LEVEL),
-      },
-      bootstrap: {
-        filename: process.env.BOOTSTRAP_FILE || `bootstrap.txt`,
-      },
-      queue: {
-        parallel: Number(process.env.QUEUE_PARALLEL) || 4,
-      },
       build: {
         name: process.env.BUILD_NAME!,
         version: process.env.BUILD_VERSION!,
         timestamp: process.env.BUILD_TIMESTAMP!,
         sha: process.env.BUILD_SHA!,
       },
+      log: {
+        level: toLogLevel(process.env.LOG_LEVEL),
+      },
+      bootstrap: {
+        filename: process.env.BOOTSTRAP_FILE || `bootstrap.txt`,
+      },
       database: {
         size: Number(process.env.DATABASE_SIZE) || 1024 * 1024,
+      },
+      queue: {
+        parallel: Number(process.env.QUEUE_PARALLEL) || 4,
+      },
+      throttlerQueue: {
+        perMinute: Number(process.env.QUEUE_THROTTLE) || 10,
       },
     });
   } catch (e) {
