@@ -16,15 +16,17 @@ if ((${BASH_VERSION%%.*} <= 3)) || [[ ${BASH_VERSION%.*} == 4.0 ]]; then
 fi
 trap 'handle_error $LINENO ${BASH_LINENO[@]}' ERR
 
-echo " => Cleaning dist-binaries"
-rm -rf ./dist-binaries
-mkdir -p ./dist-binaries
+readonly DIST="./dist-binaries"
+
+echo " => Cleaning ${DIST}"
+rm -rf ${DIST}
+mkdir -p ${DIST}
 
 echo " => Creating binaries"
-pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64,node12-alpine-x64 -o ./dist-binaries/sws "$@" --options --enable-source-maps
+pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64,node12-alpine-x64 -o ${DIST}/sws "$@" --options --enable-source-maps > ${DIST}/pkg.txt
 
 echo " => Created binaries"
-ls -la ./dist-binaries
+ls -la ${DIST}
 
 # Sleep does not change the output file
 #sleep 3m
