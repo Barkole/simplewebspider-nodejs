@@ -1,6 +1,6 @@
 interface IDatabase {
-  pop(): Promise<string | undefined>;
-  push(...items: string[]): Promise<this>;
+  remove(): Promise<string | undefined>;
+  add(...items: string[]): Promise<this>;
 }
 
 export { IDatabase };

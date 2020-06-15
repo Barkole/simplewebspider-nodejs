@@ -21,7 +21,7 @@ export class SimplerCrawler implements ICrawler {
       // Start bots
       // eslint-disable-next-line no-constant-condition
       while (true) {
-        const url = await this.database.pop();
+        const url = await this.database.remove();
         if (url === undefined) {
           logger.info(`Restarting bootstrapping...`);
           await this.bootstrapper.run(this.database);
@@ -29,7 +29,7 @@ export class SimplerCrawler implements ICrawler {
         }
         logger.info(`Processing ${url}`);
         const urls = await this.extractor.extract(url);
-        this.database.push(...urls);
+        this.database.add(...urls);
       }
     } catch (e) {
       logger.error(`Main runner failed`, e);

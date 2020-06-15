@@ -20,7 +20,7 @@ export class SimpleBootstrapper implements IBootstrapper {
           (line) =>
             line && (line.startsWith(`http://`) || line.startsWith(`https://`))
         ) //
-        .forEach((line) => database.push(line));
+        .forEach((line) => database.add(line));
     } catch (e) {
       throw new BootstrapError(
         `Bootstrapping failed [file=${this.config.filename}`,

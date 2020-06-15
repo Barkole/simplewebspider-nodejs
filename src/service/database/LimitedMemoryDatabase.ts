@@ -12,11 +12,11 @@ class LimitedMemoryDatabase implements IDatabase {
   @IsDefined()
   entries: string[];
 
-  async pop(): Promise<string | undefined> {
-    return this.entries.pop();
+  async remove(): Promise<string | undefined> {
+    return this.entries.shift();
   }
 
-  async push(...items: string[]): Promise<this> {
+  async add(...items: string[]): Promise<this> {
     logger.debug(`Add entry: ${items}`);
     this.entries.push(...items);
     while (this.entries.length > this.size) {
