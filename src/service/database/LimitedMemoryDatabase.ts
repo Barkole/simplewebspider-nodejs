@@ -1,7 +1,7 @@
 import { IsPositive, IsInt, IsDefined } from "class-validator";
 import { logger } from "../../core/logger";
 import { IDatabase } from "./IDatabase";
-import { checkValidateSync } from "../../core/utils";
+import { checkValidateSync, randomInt } from "../../core/utils";
 import { IDatabaseConfig } from "./IDatabaseConfig";
 
 class LimitedMemoryDatabase implements IDatabase {
@@ -13,7 +13,7 @@ class LimitedMemoryDatabase implements IDatabase {
   entries: string[];
 
   async remove(): Promise<string | undefined> {
-    const index = Math.floor(Math.random() * this.entries.length);
+    const index = randomInt(0, this.entries.length);
     const items = this.entries.splice(index, 1);
     const item = items[0];
     return item;
