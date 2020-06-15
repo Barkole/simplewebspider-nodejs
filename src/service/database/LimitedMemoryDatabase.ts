@@ -9,6 +9,7 @@ class LimitedMemoryDatabase implements IDatabase {
   @IsInt()
   readonly size: number;
 
+  // TODO has to be a Set
   @IsDefined()
   entries: string[];
 
@@ -26,8 +27,7 @@ class LimitedMemoryDatabase implements IDatabase {
     logger.debug(`Add entry: ${items}`);
     this.entries.push(...items);
     while (this.entries.length > this.size) {
-      const removed = this.entries.shift();
-      logger.debug(`Discard: ${removed}`);
+      this.entries.shift();
     }
     return this;
   }
