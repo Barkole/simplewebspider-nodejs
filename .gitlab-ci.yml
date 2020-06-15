@@ -52,7 +52,7 @@ Package:Pkg:
   stage: package
   script:
     - yarn global add pkg
-    - yarn build-pkg
+    - yarn build-pkg -d
   artifacts:
     paths:
       - dist-binaries/
