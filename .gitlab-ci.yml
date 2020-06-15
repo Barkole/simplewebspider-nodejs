@@ -11,6 +11,7 @@ cache:
   untracked: false
 
 before_script:
+  - apk update
   - apk add yarn bash
 
 stages:
@@ -21,7 +22,7 @@ stages:
 Build:Node:
   stage: build
   script:
-    - apk add git
+    - apk add git --no-cache
     - yarn global add typescript
     - yarn build
   artifacts:
@@ -51,6 +52,7 @@ Test:Outdated:
 Package:Pkg:
   stage: package
   script:
+    - apk add --no-cache libstdc++ libgcc
     - yarn global add pkg
     - yarn build-pkg -d
   artifacts:
