@@ -20,10 +20,13 @@ echo " => Cleaning dist-binaries"
 rm -rf ./dist-binaries
 mkdir -p ./dist-binaries
 
+
+echo "PKG_CACHE_PATH=${PKG_CACHE_PATH}"
+
 echo " => Creating binaries"
 pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64,node12-alpine-x64 -o ./dist-binaries/sws "$@" --options --enable-source-maps
 
 echo " => Created binaries"
 ls -la ./dist-binaries
 
-echo "PKG_CACHE_PATH=${PKG_CACHE_PATH}"
+sleep 10m
