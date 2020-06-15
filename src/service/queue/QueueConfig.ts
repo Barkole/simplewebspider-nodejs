@@ -1,10 +1,10 @@
 import { IQueueConfig } from "./IQueueConfig";
 import { checkValidateSync } from "../../core/utils";
-import { IsInt, Min, Max } from "class-validator";
+import { IsInt, Max, IsPositive } from "class-validator";
 
 export class QueueConfig implements IQueueConfig {
   @IsInt()
-  @Min(1)
+  @IsPositive()
   @Max(Number.MAX_SAFE_INTEGER)
   parallel: number;
 

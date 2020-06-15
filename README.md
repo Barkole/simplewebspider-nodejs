@@ -104,6 +104,7 @@ Please use and compare several 3rd party libraries by using
 * <https://npmcompare.com/>
 * <https://www.npmtrends.com/>
 * <https://bundlephobia.com/>
+* <https://packagephobia.com/>
 
 For upgrade you can also dig into changes by using
 

@@ -1,5 +1,5 @@
 import { IQueue } from "./IQueue";
-import { IsDefined, IsInt, Min, Max } from "class-validator";
+import { IsDefined, IsInt, Max, IsPositive } from "class-validator";
 import { checkValidateSync } from "../../core/utils";
 import { logger } from "../../core/logger";
 import { v4 as uuid } from "uuid";
@@ -8,7 +8,7 @@ import pAny from "p-any";
 
 export class PromiseQueue implements IQueue {
   @IsInt()
-  @Min(1)
+  @IsPositive()
   @Max(Number.MAX_SAFE_INTEGER)
   readonly parallel: number;
   @IsDefined()
