@@ -34,7 +34,7 @@ function sleep(ms: number): Promise<void> {
 }
 
 function createUrlHandler(
-  urls: string[],
+  urls: Set<string>,
   url: string,
   urlMaxLength: number
 ): Partial<Handler> {
@@ -56,7 +56,7 @@ function createUrlHandler(
       if (newUrl) {
         newUrl = expandUrl(newUrl, url);
         if (isAbsolut(newUrl) && newUrl.length <= urlMaxLength) {
-          urls.push(url);
+          urls.add(newUrl);
         }
       }
     },
@@ -77,8 +77,8 @@ export class SimpleExctractor implements IExtractor {
   @Max(Number.MAX_SAFE_INTEGER)
   urlMaxLength: number;
 
-  async extract(url: string): Promise<string[]> {
-    const urls: string[] = [];
+  async extract(url: string): Promise<Set<string>> {
+    const urls: Set<string> = new Set();
     try {
       // TODO Implement this
       await sleep(randomInt(1000, 10000));
@@ -92,18 +92,16 @@ export class SimpleExctractor implements IExtractor {
         );
       }
 
+      // TODO Check response type. We can't process binaries only html
+
       const parserStream = new WritableStream(
-        createUrlHandler(urls, url, this.urlMaxLength),
-        {
-          decodeEntities: false,
-        }
+        createUrlHandler(urls, url, this.urlMaxLength)
       );
 
       await pPipeline(response.body, parserStream);
     } catch (e) {
       logger.warn(`Failed to extract[url = ${url}]`, e);
     }
-
     return urls;
   }
   constructor() {

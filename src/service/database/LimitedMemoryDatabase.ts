@@ -11,30 +11,41 @@ class LimitedMemoryDatabase implements IDatabase {
 
   // TODO has to be a Set
   @IsDefined()
-  entries: string[];
+  entries: Set<string>;
 
   async remove(): Promise<string | undefined> {
-    const index = randomInt(0, this.entries.length);
+    const index = randomInt(0, this.entries.size);
     logger.silly(
-      `Removing element [index=${index}, length=${this.entries.length}]`
+      `Removing element [index=${index}, length=${this.entries.size}]`
     );
-    const items = this.entries.splice(index, 1);
-    const item = items[0];
+    let count = 0;
+    let item = undefined;
+    this.entries.forEach((value) => {
+      if (count++ === index) {
+        item = value;
+      }
+    });
+    item && this.entries.delete(item);
     return item;
   }
 
   async add(...items: string[]): Promise<this> {
     logger.debug(`Add entry: ${items}`);
-    this.entries.push(...items);
-    while (this.entries.length > this.size) {
-      this.entries.shift();
+    items.forEach((item) => this.entries.add(item));
+    while (this.entries.size > this.size) {
+      this.entries.forEach((value, _value, set) => {
+        if (set.size > this.size) {
+          logger.silly(`Deleting entry [size=${set.size}, value=${value}]`);
+          set.delete(value);
+        }
+      });
     }
     return this;
   }
 
   constructor(databaseConfig: IDatabaseConfig) {
     this.size = databaseConfig.size;
-    this.entries = [];
+    this.entries = new Set();
     checkValidateSync(this);
   }
 }

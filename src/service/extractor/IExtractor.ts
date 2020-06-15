@@ -1,3 +1,3 @@
 export interface IExtractor {
-  extract(url: string): Promise<string[]>;
+  extract(url: string): Promise<Set<string>>;
 }

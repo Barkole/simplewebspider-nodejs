@@ -22,6 +22,7 @@ export class SimplerCrawler implements ICrawler {
     try {
       // eslint-disable-next-line no-constant-condition
       while (true) {
+        // TODO Implement throttler
         await this.queue.add(() => this.execute());
       }
     } catch (e) {
@@ -31,6 +32,7 @@ export class SimplerCrawler implements ICrawler {
 
   async execute(): Promise<void> {
     try {
+      // TODO Wrap database with host throttler
       const url = await this.database.remove();
       if (url === undefined) {
         logger.info(`Bootstrapping...`);
@@ -41,6 +43,9 @@ export class SimplerCrawler implements ICrawler {
       try {
         logger.info(`Processing ${url}`);
         const urls = await this.extractor.extract(url);
+
+        // TODO Implement filtering of urls: only http and https; no local IPs
+
         this.database.add(...urls);
       } catch (e) {
         throw new Errlop(`Failed to process [url=${url}]`, e);
