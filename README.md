@@ -7,16 +7,15 @@
 1. Install [VSCode](https://code.visualstudio.com/)
 2. Install [Git Bash for Windows](https://gitforwindows.org/)
 3. Setup your git
-   1. `git config --global user.name "foo"`
-   2. `git config --global user.email "email@example.com"`
+   1. `git config user.name "foo"`
+   2. `git config user.email "email@example.com"`
 4. Install [node.js 12.x](https://nodejs.org/)
 5. Install [yarn](https://yarnpkg.com/) - [Installation](https://classic.yarnpkg.com/en/docs/install/#windows-stable)
 6. Install [lint-staged](https://github.com/okonet/lint-staged): `npx mrm lint-staged`
 7. Install typescript `yarn global add typescript`
 8. Install [pkg](https://www.npmjs.com/package/pkg): `yarn global add pkg`
-9. Install [nexe](https://github.com/nexe/nexe): `yarn global add nexe` - Not required due to [TypeError: Cannot read property 'set' of undefined #768](https://github.com/nexe/nexe/issues/768)
-10. Clone project: `git clone ...`
-11. Setup VSCode
+9.  Clone project: `git clone ...`
+10. Setup VSCode
    1. Install recommended extensions
    2. Install all dependencies: `yarn install`
 
@@ -27,11 +26,6 @@
 #### Auto compile on save is not working
 
 Most likely same issue as above. But no errors are shown.
-
-#### Nexe is not working
-
-* [Missing node versions for linux, mac and alpine #7779](https://github.com/nexe/nexe/issues/777)
-* [TypeError: Cannot read property 'set' of undefined #768](https://github.com/nexe/nexe/issues/768)
 
 ### TODOs
 

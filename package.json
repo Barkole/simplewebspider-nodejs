@@ -41,7 +41,6 @@
     "start-quick": "bash ./bin/start.sh",
     "build": "yarn install && bash ./bin/build.sh",
     "build-pkg": "yarn install --production --frozen-lockfile && bash ./bin/build-pkg.sh",
-    "build-nexe": "yarn install --production --frozen-lockfile && bash ./bin/build-nexe.sh",
     "gp": "bash ./bin/git-helper.sh gp",
     "gcp": "bash ./bin/git-helper.sh gcp",
     "gmm": "bash ./bin/git-helper.sh gmm",

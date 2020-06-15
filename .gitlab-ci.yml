@@ -61,20 +61,6 @@ Package:Pkg:
   needs:
     - Build:Node
 
-# https://github.com/nexe/nexe/issues/768 - TypeError: Cannot read property 'set' of undefined #768
-.Package:Nexe:
-  stage: package
-  script:
-    - yarn global add nexe
-    - yarn build-nexe
-  artifacts:
-    paths:
-      - dist-binaries/
-  dependencies:
-    - Build:Node
-  needs:
-    - Build:Node
-
 Package:Node.js:
   stage: package
   script:
