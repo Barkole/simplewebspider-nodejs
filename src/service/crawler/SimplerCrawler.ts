@@ -6,6 +6,7 @@ import { ICrawler } from "./ICrawler";
 import { checkValidateSync } from "../../core/utils";
 import { IExtractor } from "../extractor";
 import { IQueue } from "../queue";
+import Errlop from "errlop";
 
 export class SimplerCrawler implements ICrawler {
   @IsDefined()
@@ -19,26 +20,33 @@ export class SimplerCrawler implements ICrawler {
 
   async run(): Promise<void> {
     try {
-      logger.info(`Starting bootstrapping...`);
-      await this.bootstrapper.run(this.database);
-      // Start bots
       // eslint-disable-next-line no-constant-condition
       while (true) {
-        await this.queue.add(async () => {
-          const url = await this.database.remove();
-          if (url === undefined) {
-            logger.info(`Restarting bootstrapping...`);
-            await this.bootstrapper.run(this.database);
-            return;
-          }
-
-          logger.info(`Processing ${url}`);
-          const urls = await this.extractor.extract(url);
-          this.database.add(...urls);
-        });
+        await this.queue.add(() => this.execute());
       }
     } catch (e) {
       logger.error(`Main runner failed`, e);
+    }
+  }
+
+  async execute(): Promise<void> {
+    try {
+      const url = await this.database.remove();
+      if (url === undefined) {
+        logger.info(`Bootstrapping...`);
+        await this.bootstrapper.run(this.database);
+        return;
+      }
+
+      try {
+        logger.info(`Processing ${url}`);
+        const urls = await this.extractor.extract(url);
+        this.database.add(...urls);
+      } catch (e) {
+        throw new Errlop(`Failed to process [url=${url}]`, e);
+      }
+    } catch (e) {
+      logger.warn(`Failed to execute`, e);
     }
   }
 
