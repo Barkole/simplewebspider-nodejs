@@ -53,6 +53,7 @@ Most likely same issue as above. But no errors are shown.
 
 #### Use html parser stream
 
+* <https://www.npmjs.com/package/got>
 * <https://www.npmjs.com/package/htmlparser2>
 * <https://www.npmtrends.com/cheerio-vs-htmlparser2-vs-jsdom-vs-parse5-vs-scraper>
 

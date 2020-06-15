@@ -5,6 +5,7 @@ import { IDatabase } from "../database";
 import { ICrawler } from "./ICrawler";
 import { checkValidateSync } from "../../core/utils";
 import { IExtractor } from "../extractor";
+import { default as PQueue } from "p-queue";
 
 export class SimplerCrawler implements ICrawler {
   @IsDefined()
@@ -18,6 +19,7 @@ export class SimplerCrawler implements ICrawler {
     try {
       logger.info(`Starting bootstrapping...`);
       await this.bootstrapper.run(this.database);
+      const queue = new PQueue({ concurrency: 10 });
       // Start bots
       // eslint-disable-next-line no-constant-condition
       while (true) {
@@ -27,9 +29,11 @@ export class SimplerCrawler implements ICrawler {
           await this.bootstrapper.run(this.database);
           continue;
         }
-        logger.info(`Processing ${url}`);
-        const urls = await this.extractor.extract(url);
-        this.database.add(...urls);
+        await queue.add(async () => {
+          logger.info(`Processing ${url}`);
+          const urls = await this.extractor.extract(url);
+          this.database.add(...urls);
+        });
       }
     } catch (e) {
       logger.error(`Main runner failed`, e);

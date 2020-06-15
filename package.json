@@ -70,6 +70,7 @@
     "dotenv": "^8.2.0",
     "errlop": "^3.3.0",
     "fs-extra": "^9.0.1",
+    "p-queue": "^6.4.0",
     "winston": "^3.2.1",
     "winston-console-format": "^1.0.5"
   }
