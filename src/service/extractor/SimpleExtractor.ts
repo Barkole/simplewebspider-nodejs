@@ -7,32 +7,61 @@ import Errlop from "errlop";
 import util from "util";
 import stream from "stream";
 import { WritableStream } from "htmlparser2";
+import { URL } from "url";
+import { Handler } from "htmlparser2/lib/Parser";
 
 const pPipeline = util.promisify(stream.pipeline);
+
+function isAbsolut(url: string): boolean {
+  if (/^[a-zA-Z]:\\/.test(url)) {
+    return false;
+  }
+
+  return /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
+}
+
+function expandUrl(url: string, baseUrl: string): string {
+  if (isAbsolut(url)) {
+    return url;
+  }
+
+  const newUrl = new URL(url, baseUrl);
+  return newUrl.toString();
+}
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// class StringTransformer extends stream.Transform {
-//   _transform(
-//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//     chunk: any,
-//     _encoding: BufferEncoding,
-//     callback: stream.TransformCallback
-//   ): void {
-//     const data = new String(chunk).toString();
-//     callback(null, data);
-//   }
+function createUrlHandler(
+  urls: string[],
+  url: string,
+  urlMaxLength: number
+): Partial<Handler> {
+  return {
+    onopentag(
+      name: string,
+      attribs: {
+        [s: string]: string;
+      }
+    ): void {
+      logger.silly(`OpenTag: ${name} - ${JSON.stringify(attribs)}`);
+      let newUrl: string | undefined = undefined;
+      if (name === `a` && attribs && attribs[`href`]) {
+        newUrl = attribs[`href`];
+      } else if (name === `img` && attribs && attribs[`src`]) {
+        newUrl = attribs[`src`];
+      }
 
-//   _flush(callback: stream.TransformCallback): void {
-//     callback(null, null);
-//   }
-
-//   constructor(opts?: stream.TransformOptions) {
-//     super(opts);
-//   }
-// }
+      if (newUrl) {
+        newUrl = expandUrl(newUrl, url);
+        if (isAbsolut(newUrl) && newUrl.length <= urlMaxLength) {
+          urls.push(url);
+        }
+      }
+    },
+  };
+}
 
 export class SimpleExctractor implements IExtractor {
   @IsInt()
@@ -43,6 +72,10 @@ export class SimpleExctractor implements IExtractor {
   @Min(0)
   @Max(Number.MAX_SAFE_INTEGER)
   readonly httpTimeout: number;
+  @IsInt()
+  @Min(0)
+  @Max(Number.MAX_SAFE_INTEGER)
+  urlMaxLength: number;
 
   async extract(url: string): Promise<string[]> {
     const urls: string[] = [];
@@ -60,24 +93,10 @@ export class SimpleExctractor implements IExtractor {
       }
 
       const parserStream = new WritableStream(
+        createUrlHandler(urls, url, this.urlMaxLength),
         {
-          onopentag(
-            name: string,
-            attribs: {
-              [s: string]: string;
-            }
-          ): void {
-            logger.silly(`OpenTag: ${name} - ${JSON.stringify(attribs)}`);
-            if (name === `a` && attribs && attribs[`href`]) {
-              logger.debug(`OpenTag: ${name} - ${JSON.stringify(attribs)}`);
-              urls.push(attribs[`href`]);
-            } else if (name === `img` && attribs && attribs[`src`]) {
-              logger.debug(`OpenTag: ${name} - ${JSON.stringify(attribs)}`);
-              urls.push(attribs[`src`]);
-            }
-          },
-        },
-        { decodeEntities: false }
+          decodeEntities: false,
+        }
       );
 
       await pPipeline(response.body, parserStream);
@@ -91,6 +110,7 @@ export class SimpleExctractor implements IExtractor {
     // TODO Create config
     this.httpMaxSize = 10 * 1024 * 1024;
     this.httpTimeout = 60 * 1000;
+    this.urlMaxLength = 1024;
     checkValidateSync(this);
   }
 }

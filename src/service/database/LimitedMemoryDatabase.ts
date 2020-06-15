@@ -26,7 +26,8 @@ class LimitedMemoryDatabase implements IDatabase {
     logger.debug(`Add entry: ${items}`);
     this.entries.push(...items);
     while (this.entries.length > this.size) {
-      this.entries.shift();
+      const removed = this.entries.shift();
+      logger.debug(`Discard: ${removed}`);
     }
     return this;
   }
