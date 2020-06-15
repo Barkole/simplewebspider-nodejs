@@ -1,3 +1,5 @@
+[![pipeline status](https://gitlab.com/Lepardo/simplewebspider-nodejs/badges/master/pipeline.svg)](https://gitlab.com/Lepardo/simplewebspider-nodejs/-/commits/master) [![coverage report](https://gitlab.com/Lepardo/simplewebspider-nodejs/badges/master/coverage.svg)](https://gitlab.com/Lepardo/simplewebspider-nodejs/-/commits/master)
+
 # simplewebspider-nofejs
 
 ## Getting started
