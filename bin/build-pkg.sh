@@ -21,7 +21,7 @@ rm -rf ./dist-binaries
 mkdir -p ./dist-binaries
 
 
-echo "PKG_CACHE_PATH=${PKG_CACHE_PATH}"
+echo "PKG_CACHE_PATH=${}"
 
 echo " => Creating binaries"
 pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64,node12-alpine-x64 -o ./dist-binaries/sws "$@" --options --enable-source-maps
@@ -29,4 +29,4 @@ pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64,node12-alpine-x64 -o .
 echo " => Created binaries"
 ls -la ./dist-binaries
 
-sleep 10m
+sleep 3m

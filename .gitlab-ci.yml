@@ -2,10 +2,11 @@ image: "node:12-alpine"
 
 variables:
   YARN_CACHE_FOLDER: "${CI_PROJECT_DIR}/.cache/yarn"
+  PKG_CACHE_PATH: "${CI_PROJECT_DIR}/.cache/pkg"
 
 cache:
   paths:
-    - ".cache/yarn"
+    - ".cache"
   key: "${CI_PROJECT_NAME}"
   policy: pull
   untracked: false
@@ -62,6 +63,12 @@ Package:Pkg:
     - Build:Node
   needs:
     - Build:Node
+  cache:
+    untracked: true
+    paths:
+      - ".cache/yarn"
+    key: "${CI_PROJECT_NAME}"
+    policy: pull-push
 
 Package:Node.js:
   stage: package
