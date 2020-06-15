@@ -4,7 +4,7 @@ export function toLogLevel(logLevel: string | undefined): LogLevel {
   if (logLevel === undefined || logLevel === null || logLevel === ``) {
     return `info`;
   }
-  if (logLevel === `info` || logLevel === `debug`) {
+  if (logLevel === `info` || logLevel === `debug` || logLevel === `silly`) {
     return logLevel;
   }
   throw new UnknownLogLevelError(`Unknown log level`, logLevel);

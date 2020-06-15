@@ -1,1 +1,1 @@
-export type LogLevel = `debug` | `info`;
+export type LogLevel = `info` | `debug` | `silly`;

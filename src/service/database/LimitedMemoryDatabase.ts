@@ -14,6 +14,9 @@ class LimitedMemoryDatabase implements IDatabase {
 
   async remove(): Promise<string | undefined> {
     const index = randomInt(0, this.entries.length);
+    logger.silly(
+      `Removing element [index=${index}, length=${this.entries.length}]`
+    );
     const items = this.entries.splice(index, 1);
     const item = items[0];
     return item;
