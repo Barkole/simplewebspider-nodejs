@@ -30,19 +30,8 @@ function initializeConfiguration(): SwsConfig {
       bootstrap: {
         filename: process.env.BOOTSTRAP_FILE || `bootstrap.txt`,
       },
-      throttler: {
-        host: {
-          once: Number(process.env.THROTTLER_HOST_ONCE) || 20,
-          max: Number(process.env.THROTTLER_HOST_MAX) || 1024,
-          ttl: Number(process.env.THROTTLER_HOST_TTL) || 3600,
-        },
-        request: {
-          concurrent: Number(process.env.THROTTLER_REQUEST_CONCURRENT) || 4,
-          perMinute: Number(process.env.THROTTLER_REQUEST_PERMINUTE) || 10,
-        },
-      },
-      http: {
-        timeout: Number(process.env.HTTP_TIMEOUT) || 30,
+      queue: {
+        parallel: Number(process.env.QUEUE_PARALLEL) || 4,
       },
       build: {
         name: process.env.BUILD_NAME!,

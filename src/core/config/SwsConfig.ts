@@ -1,37 +1,31 @@
-import { IsNotEmpty } from "class-validator";
+import { IsDefined } from "class-validator";
 import { checkValidateSync } from "../utils";
 import { IDatabaseConfig, DatabaseConfig } from "../../service/database";
 import { ILogConfig, LogConfig } from "../logger";
 import { IBootstrapConfig, BootstrapConfig } from "../../service/bootstrap";
-import { ThrottlerConfig } from "./moveout/ThrottlerConfig";
-import { IHttpConfig } from "./moveout/IHttpConfig";
-import { HttpConfig } from "./moveout/HttpConfig";
 import { IBuildConfig } from "./IBuildConfig";
 import { BuildConfig } from "./BuildConfig";
 import { ISwsConfig } from "./ISwsConfig";
-import { IThrottlerConfig } from "./moveout/IThrottlerConfig";
+import { IQueueConfig, QueueConfig } from "../../service/queue";
 
 export class SwsConfig implements ISwsConfig {
-  @IsNotEmpty()
+  @IsDefined()
   log: ILogConfig;
-  @IsNotEmpty()
+  @IsDefined()
   bootstrap: IBootstrapConfig;
-  @IsNotEmpty()
-  throttler: IThrottlerConfig;
-  @IsNotEmpty()
-  http: IHttpConfig;
-  @IsNotEmpty()
+  @IsDefined()
   build: IBuildConfig;
-  @IsNotEmpty()
+  @IsDefined()
   database: IDatabaseConfig;
+  @IsDefined()
+  queue: IQueueConfig;
 
   constructor(that: ISwsConfig) {
     this.log = new LogConfig(that.log);
     this.bootstrap = new BootstrapConfig(that.bootstrap);
-    this.throttler = new ThrottlerConfig(that.throttler);
-    this.http = new HttpConfig(that.http);
     this.build = new BuildConfig(that.build);
     this.database = new DatabaseConfig(that.database);
+    this.queue = new QueueConfig(that.queue);
     checkValidateSync(this);
   }
 }

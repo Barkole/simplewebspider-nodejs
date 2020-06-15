@@ -5,6 +5,7 @@ import { LimitedMemoryDatabase } from "./service/database";
 import { SimpleBootstrapper } from "./service/bootstrap";
 import { SimplerCrawler } from "./service/crawler";
 import { SimpleExctractor as SimpleExtractor } from "./service/extractor";
+import { PromiseQueue } from "./service/queue";
 
 // Update loglevel after loading configuration
 // updateLogger(config.log); // TypeError: logger_1.updateLogger is not a function
@@ -20,7 +21,8 @@ logger.info(`Wire services`);
 const bootstrapper = new SimpleBootstrapper(config.bootstrap);
 const database = new LimitedMemoryDatabase(config.database);
 const extractor = new SimpleExtractor();
-const crawler = new SimplerCrawler(database, bootstrapper, extractor);
+const queue = new PromiseQueue(config.queue);
+const crawler = new SimplerCrawler(database, bootstrapper, extractor, queue);
 
 logger.info(`Starting crawler...`);
 crawler.run();
