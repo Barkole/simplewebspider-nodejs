@@ -46,6 +46,7 @@ Test:Outdated:
     - Build:Node
   needs:
     - Build:Node
+  allow_failure: true
 
 Package:Pkg:
   stage: package
