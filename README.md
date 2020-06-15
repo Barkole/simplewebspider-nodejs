@@ -33,6 +33,11 @@ Most likely same issue as above. But no errors are shown.
 
 ### TODOs
 
+#### Use module-alias
+
+* <https://www.npmjs.com/package/module-alias>
+* <https://github.com/vercel/pkg/issues/896>
+
 #### Use promise queues
 
 * <https://github.com/sindresorhus/promise-fun>
