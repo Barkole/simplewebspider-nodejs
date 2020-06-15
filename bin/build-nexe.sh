@@ -16,9 +16,18 @@ if ((${BASH_VERSION%%.*} <= 3)) || [[ ${BASH_VERSION%.*} == 4.0 ]]; then
 fi
 trap 'handle_error $LINENO ${BASH_LINENO[@]}' ERR
 
-echo " => cleaning ./dist"
-rm -rf ./dist
-mkdir -p ./dist
+readonly DIST="./dist-binaries"
 
-echo " => cleaning ts build info"
-rm -rf tsconfig.tsbuildinfo
+echo " => determine node version..."
+readonly NODE_VERSION=`echo "${npm_package_engines_node}" | sed 's/~//g'`
+echo "${NODE_VERSION}"
+
+echo " => Cleaning dist-binaries"
+rm -rf ${DIST}
+mkdir -p ${DIST}
+
+echo " => Creating binaries"
+nexe package.json -r "./dist/**/*" -r "./node_module/**/*" -t windows-x64-${NODE_VERSION} -o ${DIST}/sws-windows-x64y
+
+echo " => Created binaries"
+ls -la ${DIST}

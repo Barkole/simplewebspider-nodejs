@@ -14,8 +14,9 @@
 6. Install [lint-staged](https://github.com/okonet/lint-staged): `npx mrm lint-staged`
 7. Install typescript `yarn global add typescript`
 8. Install [pkg](https://www.npmjs.com/package/pkg): `yarn global add pkg`
-9. Clone project: `git clone ...`
-10. Setup VSCode
+9. Install [nexe](https://github.com/nexe/nexe): `yarn global add nexe`
+10. Clone project: `git clone ...`
+11. Setup VSCode
    1. Install recommended extensions
    2. Install all dependencies: `yarn install`
 

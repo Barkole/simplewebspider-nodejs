@@ -60,6 +60,19 @@ Package:Pkg:
   needs:
     - Build:Node
 
+Package:Nexe:
+  stage: package
+  script:
+    - yarn global add nexe
+    - yarn build-nexe
+  artifacts:
+    paths:
+      - dist-binaries/
+  dependencies:
+    - Build:Node
+  needs:
+    - Build:Node
+
 Package:Node.js:
   stage: package
   script:
