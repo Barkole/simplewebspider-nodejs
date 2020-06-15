@@ -1,14 +1,14 @@
-import { IExtractor } from "./IExtractor";
-import { randomInt, checkValidateSync } from "../../core/utils";
-import fetch from "node-fetch";
-import { IsInt, Min, Max } from "class-validator";
-import { logger } from "../../core/logger";
+import { IsInt, Max, Min } from "class-validator";
 import Errlop from "errlop";
-import util from "util";
-import stream from "stream";
 import { WritableStream } from "htmlparser2";
-import { URL } from "url";
 import { Handler } from "htmlparser2/lib/Parser";
+import fetch from "node-fetch";
+import stream from "stream";
+import { URL } from "url";
+import util from "util";
+import { logger } from "../../core/logger";
+import { checkValidateSync, randomInt } from "../../core/utils";
+import { IExtractor } from "./IExtractor";
 
 const pPipeline = util.promisify(stream.pipeline);
 

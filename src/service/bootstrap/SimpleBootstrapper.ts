@@ -1,10 +1,10 @@
 import { IsDefined } from "class-validator";
 import fs from "fs-extra";
+import { checkValidateSync } from "../../core/utils";
 import { IDatabase } from "../database";
-import { IBootstrapper } from "./IBootstrapper";
 import { BootstrapError } from "./BootstrapError";
 import { IBootstrapConfig } from "./IBootstrapConfig";
-import { checkValidateSync } from "../../core/utils";
+import { IBootstrapper } from "./IBootstrapper";
 
 export class SimpleBootstrapper implements IBootstrapper {
   @IsDefined()

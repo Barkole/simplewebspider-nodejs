@@ -1,6 +1,6 @@
-import { IQueueConfig } from "./IQueueConfig";
+import { IsInt, IsPositive, Max } from "class-validator";
 import { checkValidateSync } from "../../core/utils";
-import { IsInt, Max, IsPositive } from "class-validator";
+import { IQueueConfig } from "./IQueueConfig";
 
 export class QueueConfig implements IQueueConfig {
   @IsInt()

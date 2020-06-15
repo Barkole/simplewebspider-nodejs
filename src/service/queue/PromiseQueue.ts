@@ -1,10 +1,10 @@
-import { IQueue } from "./IQueue";
-import { IsDefined, IsInt, Max, IsPositive } from "class-validator";
-import { checkValidateSync } from "../../core/utils";
-import { logger } from "../../core/logger";
-import { v4 as uuid } from "uuid";
-import { IQueueConfig } from "./IQueueConfig";
+import { IsDefined, IsInt, IsPositive, Max } from "class-validator";
 import pAny from "p-any";
+import { v4 as uuid } from "uuid";
+import { logger } from "../../core/logger";
+import { checkValidateSync } from "../../core/utils";
+import { IQueue } from "./IQueue";
+import { IQueueConfig } from "./IQueueConfig";
 
 export class PromiseQueue implements IQueue {
   @IsInt()

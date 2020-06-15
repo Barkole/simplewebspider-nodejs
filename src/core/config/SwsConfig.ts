@@ -1,12 +1,12 @@
 import { IsDefined } from "class-validator";
-import { checkValidateSync } from "../utils";
-import { IDatabaseConfig, DatabaseConfig } from "../../service/database";
-import { ILogConfig, LogConfig } from "../logger";
-import { IBootstrapConfig, BootstrapConfig } from "../../service/bootstrap";
-import { IBuildConfig } from "./IBuildConfig";
-import { BuildConfig } from "./BuildConfig";
-import { ISwsConfig } from "./ISwsConfig";
+import { BootstrapConfig, IBootstrapConfig } from "../../service/bootstrap";
+import { DatabaseConfig, IDatabaseConfig } from "../../service/database";
 import { IQueueConfig, QueueConfig } from "../../service/queue";
+import { ILogConfig, LogConfig } from "../logger";
+import { checkValidateSync } from "../utils";
+import { BuildConfig } from "./BuildConfig";
+import { IBuildConfig } from "./IBuildConfig";
+import { ISwsConfig } from "./ISwsConfig";
 
 export class SwsConfig implements ISwsConfig {
   @IsDefined()

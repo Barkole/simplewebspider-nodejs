@@ -1,4 +1,5 @@
 import Errlop from "errlop";
+
 export class BootstrapError extends Errlop {
   filename: string | undefined;
 

@@ -1,9 +1,9 @@
-import { logger } from "./core/logger";
 import { config } from "./core/config";
+import { logger } from "./core/logger";
 import { processOn } from "./core/processOn";
-import { LimitedMemoryDatabase } from "./service/database";
 import { SimpleBootstrapper } from "./service/bootstrap";
 import { SimplerCrawler } from "./service/crawler";
+import { LimitedMemoryDatabase } from "./service/database";
 import { SimpleExctractor as SimpleExtractor } from "./service/extractor";
 import { PromiseQueue } from "./service/queue";
 

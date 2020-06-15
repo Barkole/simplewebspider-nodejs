@@ -1,6 +1,7 @@
-import { IsInt, Max, IsPositive } from "class-validator";
+import { IsInt, IsPositive, Max } from "class-validator";
 import { checkValidateSync } from "../../core/utils";
 import { IDatabaseConfig } from "./IDatabaseConfig";
+
 export class DatabaseConfig implements IDatabaseConfig {
   @IsPositive()
   @Max(Number.MAX_SAFE_INTEGER)

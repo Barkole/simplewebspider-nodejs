@@ -1,12 +1,12 @@
 import { IsDefined } from "class-validator";
-import { IBootstrapper } from "../bootstrap";
+import Errlop from "errlop";
 import { logger } from "../../core/logger";
-import { IDatabase } from "../database";
-import { ICrawler } from "./ICrawler";
 import { checkValidateSync } from "../../core/utils";
+import { IBootstrapper } from "../bootstrap";
+import { IDatabase } from "../database";
 import { IExtractor } from "../extractor";
 import { IQueue } from "../queue";
-import Errlop from "errlop";
+import { ICrawler } from "./ICrawler";
 
 export class SimplerCrawler implements ICrawler {
   @IsDefined()

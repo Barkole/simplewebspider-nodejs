@@ -1,7 +1,7 @@
-import { IsPositive, IsInt, IsDefined } from "class-validator";
+import { IsDefined, IsInt, IsPositive } from "class-validator";
 import { logger } from "../../core/logger";
-import { IDatabase } from "./IDatabase";
 import { checkValidateSync, randomInt } from "../../core/utils";
+import { IDatabase } from "./IDatabase";
 import { IDatabaseConfig } from "./IDatabaseConfig";
 
 class LimitedMemoryDatabase implements IDatabase {

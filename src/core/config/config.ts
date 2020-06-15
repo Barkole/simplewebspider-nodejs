@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import dotenv from "dotenv";
 import fs from "fs-extra";
-import { EnvFileMissingError } from "./EnvFileMissingError";
-import { SwsConfig } from "./SwsConfig";
-import { InvalidConfigurationError } from "./InvalidConfigurationError";
-import { toLogLevel } from "../logger";
 import { envOverride } from "../../resources";
+import { toLogLevel } from "../logger";
+import { EnvFileMissingError } from "./EnvFileMissingError";
+import { InvalidConfigurationError } from "./InvalidConfigurationError";
+import { SwsConfig } from "./SwsConfig";
 
 function loadConfig(filename: string): void {
   if (!fs.existsSync(filename)) {

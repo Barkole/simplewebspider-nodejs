@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator";
-import { IBuildConfig } from "./IBuildConfig";
 import { checkValidateSync } from "../utils";
+import { IBuildConfig } from "./IBuildConfig";
 export class BuildConfig implements IBuildConfig {
   constructor(that: IBuildConfig) {
     this.name = that.name;

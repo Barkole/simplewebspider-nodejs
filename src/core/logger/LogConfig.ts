@@ -1,7 +1,7 @@
 import { IsNotEmpty } from "class-validator";
+import { checkValidateSync } from "../utils";
 import { ILogConfig } from "./ILogConfig";
 import { LogLevel } from "./LogLevel";
-import { checkValidateSync } from "../utils";
 
 export class LogConfig implements ILogConfig {
   constructor(that: ILogConfig) {
