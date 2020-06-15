@@ -7,7 +7,7 @@ import stream from "stream";
 import { URL } from "url";
 import util from "util";
 import { logger } from "../../core/logger";
-import { checkValidateSync, randomInt } from "../../core/utils";
+import { checkValidateSync } from "../../core/utils";
 import { IExtractor } from "./IExtractor";
 
 const pPipeline = util.promisify(stream.pipeline);
@@ -27,10 +27,6 @@ function expandUrl(url: string, baseUrl: string): string {
 
   const newUrl = new URL(url, baseUrl);
   return newUrl.toString();
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function createUrlHandler(
@@ -81,8 +77,6 @@ export class SimpleExctractor implements IExtractor {
   async extract(url: string): Promise<Set<string>> {
     const urls: Set<string> = new Set();
     try {
-      // TODO Implement this
-      await sleep(randomInt(1000, 10000));
       const response = await fetch(url, {
         size: this.httpMaxSize,
         timeout: this.httpTimeout,
