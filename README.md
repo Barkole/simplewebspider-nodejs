@@ -53,17 +53,6 @@ Most likely same issue as above. But no errors are shown.
 * <https://www.npmjs.com/package/htmlparser2>
 * <https://www.npmtrends.com/cheerio-vs-htmlparser2-vs-jsdom-vs-parse5-vs-scraper>
 
-#### Implement gitlab pipeline
-
-TODO
-
-#### Create also binary artifact
-
-* <https://github.com/nexe/nexe>
-* <https://www.npmjs.com/package/pkg>
-  * <https://dev.to/jochemstoel/bundle-your-node-app-to-a-single-executable-for-windows-linux-and-osx-2c89>
-  * <https://medium.com/@jamomani/run-node-app-as-single-executable-file-on-windows-mac-or-linux-d4e9a98ef6fd>
-
 #### Dependency Injection
 
 Check for
