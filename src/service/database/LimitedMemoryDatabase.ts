@@ -13,7 +13,10 @@ class LimitedMemoryDatabase implements IDatabase {
   entries: string[];
 
   async remove(): Promise<string | undefined> {
-    return this.entries.shift();
+    const index = Math.floor(Math.random() * this.entries.length);
+    const items = this.entries.splice(index, 1);
+    const item = items[0];
+    return item;
   }
 
   async add(...items: string[]): Promise<this> {
