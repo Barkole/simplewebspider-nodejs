@@ -12,6 +12,7 @@ export class SimpleBootstrapper implements IBootstrapper {
 
   async run(database: IDatabase): Promise<void> {
     try {
+      // TODO Implement embedded default bootstrapping file
       const filename = this.config.filename;
       const content = await fs.readFile(filename, `utf8`);
       content
