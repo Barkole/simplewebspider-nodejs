@@ -23,6 +23,10 @@
 
 ### Known issues
 
+#### Pkg does not work in docker
+
+[Bug: Pkg does not create correct exe in docker #930](https://github.com/vercel/pkg/issues/930)
+
 #### Auto compile on save is not working
 
 Most likely same issue as above. But no errors are shown.
