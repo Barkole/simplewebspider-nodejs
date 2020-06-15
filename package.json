@@ -41,11 +41,11 @@
     "start-quick": "bash ./bin/start.sh",
     "build": "yarn install && bash ./bin/build.sh",
     "build-pkg": "yarn install --production --frozen-lockfile && bash ./bin/build-pkg.sh",
-    "gp": "bash ./bin/git-helper.sh gp",
-    "gcp": "bash ./bin/git-helper.sh gcp",
-    "gmm": "bash ./bin/git-helper.sh gmm",
-    "gmc": "bash ./bin/git-helper.sh gmc",
-    "gbc": "bash ./bin/git-helper.sh gbc"
+    "gp": "yarn install && bash ./bin/git-helper.sh gp",
+    "gcp": "yarn install && bash ./bin/git-helper.sh gcp",
+    "gmm": "yarn install && bash ./bin/git-helper.sh gmm",
+    "gmc": "yarn install && bash ./bin/git-helper.sh gmc",
+    "gbc": "yarn install && bash ./bin/git-helper.sh gbc"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.1",

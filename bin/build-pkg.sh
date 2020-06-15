@@ -25,3 +25,5 @@ pkg . -t node12-linux-x64,node12-macos-x64,node12-win-x64,node12-alpine-x64 -o .
 
 echo " => Created binaries"
 ls -la ./dist-binaries
+
+echo "PKG_CACHE_PATH=${PKG_CACHE_PATH}"
