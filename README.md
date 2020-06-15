@@ -27,6 +27,12 @@
 #### Auto compile on save is not working
 
 Most likely same issue as above. But no errors are shown.
+
+#### Nexe is not working
+
+* [Missing node versions for linux, mac and alpine #7779](https://github.com/nexe/nexe/issues/777)
+* [TypeError: Cannot read property 'set' of undefined #768](https://github.com/nexe/nexe/issues/768)
+
 ### TODOs
 
 #### Use promise queues
