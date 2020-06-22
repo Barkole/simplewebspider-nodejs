@@ -70,7 +70,7 @@
   "dependencies": {
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
-    "errlop": "^3.3.0",
+    "errlop": "^3.9.0",
     "fs-extra": "^9.0.1",
     "htmlparser2": "^4.1.0",
     "node-fetch": "^2.6.0",
