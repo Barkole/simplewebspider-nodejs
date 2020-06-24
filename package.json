@@ -75,7 +75,7 @@
     "htmlparser2": "^4.1.0",
     "node-fetch": "^2.6.0",
     "p-any": "^3.0.0",
-    "uuid": "^8.1.0",
+    "uuid": "^8.2.0",
     "winston": "^3.2.1",
     "winston-console-format": "^1.0.5"
   }
