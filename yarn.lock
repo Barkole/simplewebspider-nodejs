@@ -578,10 +578,10 @@ env-variable@0.0.x:
   resolved "https://registry.yarnpkg.com/env-variable/-/env-variable-0.0.6.tgz#74ab20b3786c545b62b4a4813ab8cf22726c9808"
   integrity sha512-bHz59NlBbtS0NhftmR8+ExBEekE7br0e01jw+kk0NDro7TtZzBYZ5ScGPs3OmwnpyfHTHOtr1Y6uedCdrIldtg==
 
-errlop@^3.3.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/errlop/-/errlop-3.6.0.tgz#bc6120881f04f799f97cabe6255d455a458e324c"
-  integrity sha512-3v5QTdRjtvr7FQPkGoDb1H1qMpEECQqDm+QrpNj/WPFT8KJkasqRkXWEqPTjO96ABLWQyZf8Uz+/MTdQl3A2CQ==
+errlop@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/errlop/-/errlop-4.5.0.tgz#0bdde97b382ec9ed3b042eeb49f4257d480e9188"
+  integrity sha512-oUGLzMxSQ/wfkq2hTIJv66Y6WAqCXM+10BKdllOrQFvc6bqcSomL2pUcflazdcOtodT7agUJ8tz75XzBtL1o0w==
 
 error-ex@^1.2.0, error-ex@^1.3.1:
   version "1.3.2"
